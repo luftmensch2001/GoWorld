@@ -1,0 +1,127 @@
+.header {
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    background-image: url('/assets/img/BackImgLogin.png');
+    background-size: cover;
+}
+
+.container__form {
+    height: 500px; 
+    /* height: 600px;  */
+    width: 450px;
+    background-color: #bab4bd9d;
+    margin-top: 112px;
+    margin-bottom: 120px;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.container__form-signup {
+    display: none;
+}
+
+.container__form-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container__form-header a {
+    text-decoration: none;
+    /* color: #F8EBFF; */
+    color: var(--underline-color);
+    font-family: 'Nunito', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    padding-bottom: 12px;
+    border-bottom: 4px solid var(--underline-color);
+    transition: all 0.4s linear;
+}
+
+.container__form-header a.form-signup__header-signup {
+    color: #F8EBFF;
+    border-color: transparent;
+}
+
+.container__form-text {
+    color: #58768D;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    font-family: 'Nunito', sans-serif;
+    padding-top: 32px;
+}
+
+.form-signup__form input,
+.form-login__form input {
+    color: var(--underline-color);
+    outline: none;
+    border: none;
+    font-size: 2.4rem;
+    font-family: 'Nunito', sans-serif;
+    background-color: transparent;
+    border-bottom: 3px solid var(--text-color);
+    width: 100%;
+    padding: 32px 0 8px 12px;
+}
+
+.form-signup__form input::placeholder,
+.form-login__form input::placeholder {
+    color: var(--text-color);
+}
+
+.form-signup__btn-signup,
+.form-login__btn-login {  
+    display: flex;
+    justify-content: center;
+}
+
+.form-signup__btn-signup button,
+.form-login__btn-login button{
+    background-color: #274861;
+    color: var(--white-color);
+    font-size: 2.4rem;
+    font-family: 'Nunito', serif;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-top: 40px;
+    width: 150px;
+    height: 50px;
+    padding-top: 2%;
+}
+
+.form-login__forgot-password {
+    text-decoration: none;
+    color: var(--underline-color);
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-top: 20px;
+    padding-left: 8px;
+    font-family: 'Roboto', serif;
+}
+
+.form-login__forgot-password:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.form-login__btn-login button{
+    font-size: 2rem;
+}
+
+.form-login__btn-login button:hover,
+.form-signup__btn-signup button:hover {
+    cursor: pointer;
+    background-color: #1e4867;
+    color: #e5e5e5;
+}

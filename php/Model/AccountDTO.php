@@ -66,9 +66,8 @@ class AccountDTO
     $email = $account->GetEmail();
     $cmnd = $account->GetCmnd();
     $address = $account->GetAddress();
-    $query = "Insert into Account(username, password, email,fullName,cmnd,address) 
-    values('$username','$password','$email',
-    '$fullName',$cmnd,'$address')";
+    $query = "Insert into account(userName, password, email,fullName) 
+    values('$username','$password','$email','$fullName')";
     $result = DataProvider::getInstance()->Execute($query);
 
     return $result;

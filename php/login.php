@@ -1,17 +1,38 @@
 <?php
 require_once('./Controller/Account.php');
 require_once('./Model/AccountDTO.php');
-
+error_reporting(E_ALL ^ E_NOTICE);
 if (isset($_POST['usernameLogin'])) {
-    $username = $_POST['usernameLogin'];
-    $password =  md5($_POST['passwordLogin']);
+    $usernameLogin = $_POST['usernameLogin'];
+    $passwordLogin =  md5($_POST['passwordLogin']);
 
-    $id = AccountDTO::getInstance()->GetId($username, $password);
+    $id = AccountDTO::getInstance()->GetId($usernameLogin, $passwordLogin);
     if ($id != -1) {
         $_SESSION['idAccount'] = $id;
-        include './Home-page.php';
+        header("Location: ./Home-page.php");
     } else {
-        echo '<script>alert("Tên tài khoản hoặc mật khẩu không chính xác")</script>';
+        echo "<script>alert('Tên tài khoản hoặc mật khẩu không chính xác')</script>";
+    }
+}
+if (isset($_POST['usernameSignup'])) {
+    $usernameSignup = $_POST['usernameSignup'];
+    $passwordSignup =  md5($_POST['passwordSignup']);
+    $emailSignup = $_POST['emailSignup'];
+    $repasswordSignup = md5($_POST['re-passwordSignup']);
+
+    if ($passwordSignup != $repasswordSignup) {
+        $type = "Signup";
+        echo "<script>alert('Mật khẫu nhập lại không khớp')</script>";
+    } else
+    if (AccountDTO::getInstance()->AccountExists($usernameSignup)) {
+        echo "<script>alert('Tên tài khoản đã tồn tại')</script>";
+    } else {
+        $account = new Account();
+        $account->SetUsername($usernameSignup)->SetPassword($passwordSignup)->SetEmail($emailSignup);
+        if (AccountDTO::getInstance()->CreateAccount($account))
+            echo "<script>alert('Tạo tài khoản thành công')</script>";
+        else
+            echo "<script>alert('Tạo tài khoản thất bại')</script>";
     }
 }
 ?>
@@ -32,9 +53,10 @@ if (isset($_POST['usernameLogin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
+<body onload="checkFunction()">
     <header class="header">
         <a class="header__logo" href="#">
             <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
@@ -90,6 +112,7 @@ if (isset($_POST['usernameLogin'])) {
         </div>
     </header>
     <div class="container">
+        <input id="type" type="hidden" value="<?php echo $type; ?>">
         <div class="container__form">
             <div class="container__form-header">
                 <a href="" class="form-signup__header-login">
@@ -106,29 +129,31 @@ if (isset($_POST['usernameLogin'])) {
             </div>
             <div class="container__form-signup">
                 <form method="POST" action="#" class="form-signup__form">
-                    <input type="text" class="form-signup__form-username" name="usernameSignup" spellcheck="false" placeholder="Tên đăng nhập" required>
-                    <input type="text" class="form-signup__form-email" name="emailSignup" spellcheck="false" placeholder="Địa chỉ email" required>
+                    <input type="text" class="form-signup__form-username" name="usernameSignup" spellcheck="false" placeholder="Tên đăng nhập" value="<?php echo $usernameSignup ?>" required>
+                    <input type="email" class="form-signup__form-email" name="emailSignup" spellcheck="false" placeholder="Địa chỉ email" value="<?php echo $emailSignup ?> " required>
                     <input type="password" class="form-signup__form-password" name="passwordSignup" spellcheck="false" placeholder="Mật khẩu" required>
                     <input type="password" class="form-signup__form-repassword" name="re-passwordSignup" spellcheck="false" placeholder="Nhập lại mật khẩu" required>
+                    <div class="form-signup__btn-signup">
+                        <button>ĐĂNG KÝ</button>
+                        </script>
+                    </div>
                 </form>
-                <div class="form-signup__btn-signup">
-                    <button>ĐĂNG KÝ</button>
-                </div>
+
             </div>
             <div class="container__form-login">
                 <form method="post" action="#" class="form-login__form">
                     <input type="text" class="form-login__form-username" name="usernameLogin" spellcheck="false" placeholder="Tên đăng nhập" required>
                     <input type="password" class="form-login__form-password" name="passwordLogin" spellcheck="false" placeholder="Mật khẩu" required>
-                <div class="form-login__btn-login">
-                    <button>ĐĂNG NHẬP</button>
-                </div>
+                    <div class="form-login__btn-login">
+                        <button>ĐĂNG NHẬP</button>
+                    </div>
                 </form>
                 <div>
                     <button class="form-login__forgot-password">Quên mật khẩu?</button>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
 
     </div>
     <footer class="footer">

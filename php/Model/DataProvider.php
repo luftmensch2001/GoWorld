@@ -17,7 +17,7 @@ class DataProvider{
         $host = "localhost";
         $user = "root";
         $password = "";
-        $db = "shopping";
+        $db = "webgoworld";
 
         $dblink =  mysqli_connect($host, $user, $password, $db);
         $result = mysqli_query($dblink, $query);

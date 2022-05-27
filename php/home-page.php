@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/home-page.css">
-    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/home-page.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <body>
     <header class="header">
         <a class="header__logo" href="#">
-            <img src="./assets/img/Logo.png" alt="" width="60px" height="60px">
+            <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
             <h2>GoWorld</h2>
         </a>
         <div class="header__navbar">
@@ -38,12 +38,12 @@
             <button class="header__account-btn secondary-btn">Đăng ký</button>
             <!-- <div class="header__account-user">
                 <a href="">
-                    <img src="./assets/img/avatar.png" alt="" class="header__account-user-img">
+                    <img src="../assets/img/avatar.png" alt="" class="header__account-user-img">
                 </a>
                 <div class="header__account-user-menu">
                     <div class="account-user__info">
                         <a href="">
-                            <img src="./assets/img/avatar.png" alt=""  width="30px" height="30px">
+                            <img src="../assets/img/avatar.png" alt=""  width="30px" height="30px">
                             <div>
                                 <span class="account-user__info-name">Họ Và Tên</span> <br>
                                 <span class="account-user__info-sub">Thông tin cá nhân</span> 
@@ -52,15 +52,15 @@
                     </div>
                     <div class="account-user__option">
                         <a href="" class="account-user__option-item">
-                            <img src="./assets/img/history.png" alt="">
+                            <img src="../assets/img/history.png" alt="">
                             <span>Lịch sử đặt tour</span>
                         </a href="">
                         <a href="" class="account-user__option-item">
-                            <img src="./assets/img/setting.png" alt="">
+                            <img src="../assets/img/setting.png" alt="">
                             <span>Cài đặt</span>
                         </a href="">
                         <a href="" class="account-user__option-item">
-                            <img src="./assets/img/logout.png" alt="">
+                            <img src="../assets/img/logout.png" alt="">
                             <span>Đăng xuất</span>
                         </a href="">
                     </div>
@@ -72,7 +72,7 @@
         <div class="container__box-search">
             <div class="box-search__option">
                 <div>
-                    <img src="./assets/img/location.png" alt="" width="20px" height="20px">
+                    <img src="../assets/img/location.png" alt="" width="20px" height="20px">
                     <label for="">Địa điểm</label>
                 </div>
                 <select name="" id="">
@@ -83,7 +83,7 @@
             </div>
             <div class="box-search__option">
                 <div>
-                    <img src="./assets/img/people.png" alt="" width="20px" height="20px">
+                    <img src="../assets/img/people.png" alt="" width="20px" height="20px">
                     <label for="">Số người</label>
                 </div>
                 <select name="" id="">
@@ -94,14 +94,14 @@
             </div>
             <div class="box-search__option">
                 <div>
-                    <img src="./assets/img/date.png" alt="" width="20px" height="20px">
+                    <img src="../assets/img/date.png" alt="" width="20px" height="20px">
                     <label for="">Ngày checkin</label>
                 </div>
                 <input type="date" name="" id="">
             </div>
             <div class="box-search__option">
                 <div>
-                    <img src="./assets/img/date.png" alt="" width="20px" height="20px">
+                    <img src="../assets/img/date.png" alt="" width="20px" height="20px">
                     <label for="">Ngày checkout</label>
                 </div>
                 <input type="date" name="" id="">
@@ -110,16 +110,16 @@
         </div>
         <div class="container__box-tour">
             <a class="tour-item" href="#">
-                <img src="./assets/img/tour.png" alt="" width="340px" height="220px">
+                <img src="../assets/img/tour.png" alt="" width="340px" height="220px">
                 <div class="tour-item__header">
                     <span>Tour Đảo Phú Quốc</span> <br>
                     <span>(3 ngày 2 đêm)</span>
                     <div class="tour-item__rate">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/downvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/downvote.png">
                     </div>
                     <div class="row-end">
                         <div class="tour-item__price">1.500.000 VND</div>
@@ -128,16 +128,16 @@
                 </div>
             </a>
             <a class="tour-item" href="#">
-                <img src="./assets/img/tour.png" alt="" width="340px" height="220px">
+                <img src="../assets/img/tour.png" alt="" width="340px" height="220px">
                 <div class="tour-item__header">
                     <span>Tour Đảo Phú Quốc</span> <br>
                     <span>(3 ngày 2 đêm)</span>
                     <div class="tour-item__rate">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/downvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/downvote.png">
                     </div>
                     <div class="row-end">
                         <div class="tour-item__price">1.500.000 VND</div>
@@ -146,16 +146,16 @@
                 </div>
             </a>
             <a class="tour-item" href="#">
-                <img src="./assets/img/tour.png" alt="" width="340px" height="220px">
+                <img src="../assets/img/tour.png" alt="" width="340px" height="220px">
                 <div class="tour-item__header">
                     <span>Tour Đảo Phú Quốc</span> <br>
                     <span>(3 ngày 2 đêm)</span>
                     <div class="tour-item__rate">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/downvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/downvote.png">
                     </div>
                     <div class="row-end">
                         <div class="tour-item__price">1.500.000 VND</div>
@@ -164,16 +164,16 @@
                 </div>
             </a>
             <a class="tour-item" href="#">
-                <img src="./assets/img/tour.png" alt="" width="340px" height="220px">
+                <img src="../assets/img/tour.png" alt="" width="340px" height="220px">
                 <div class="tour-item__header">
                     <span>Tour Đảo Phú Quốc</span> <br>
                     <span>(3 ngày 2 đêm)</span>
                     <div class="tour-item__rate">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/downvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/downvote.png">
                     </div>
                     <div class="row-end">
                         <div class="tour-item__price">1.500.000 VND</div>
@@ -182,16 +182,16 @@
                 </div>
             </a>
             <a class="tour-item" href="#">
-                <img src="./assets/img/tour.png" alt="" width="340px" height="220px">
+                <img src="../assets/img/tour.png" alt="" width="340px" height="220px">
                 <div class="tour-item__header">
                     <span>Tour Đảo Phú Quốc</span> <br>
                     <span>(3 ngày 2 đêm)</span>
                     <div class="tour-item__rate">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/upvote.png">
-                        <img src="./assets/img/downvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/upvote.png">
+                        <img src="../assets/img/downvote.png">
                     </div>
                     <div class="row-end">
                         <div class="tour-item__price">1.500.000 VND</div>

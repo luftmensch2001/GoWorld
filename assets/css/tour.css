@@ -1,0 +1,47 @@
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.sidenav a:hover {
+    color: #000;
+}
+.active {
+    color: #000 !important;
+}
+.table-img {
+    width: 50px;
+}
+.modal-img {
+    width: 50% !important;
+    align-self: center;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.hide {
+    display: none !important;
+}
+
+/* rating */
+#rating-container {
+/*   border: 1px solid rgba(222, 222, 222, 0.6); */
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin: 0 auto;
+    width: 50%;
+}
+#rating-container > div {
+    float: left;
+    padding: 0px 2px;
+    font-size: 16px;
+    color: #a9a9a9;
+    cursor: pointer;
+}
+#rating-container > div.active,
+#rating-container > div.selected{
+    color: #fcd000 !important;
+}

@@ -1,6 +1,9 @@
 <?php
 require_once('./Controller/Account.php');
 require_once('./Model/AccountDTO.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 error_reporting(E_ALL ^ E_NOTICE);
 if (isset($_POST['usernameLogin'])) {
     $usernameLogin = $_POST['usernameLogin'];
@@ -20,19 +23,22 @@ if (isset($_POST['usernameSignup'])) {
     $emailSignup = $_POST['emailSignup'];
     $repasswordSignup = md5($_POST['re-passwordSignup']);
 
-    if ($passwordSignup != $repasswordSignup) {
-        $type = "Signup";
-        echo "<script>alert('Mật khẫu nhập lại không khớp')</script>";
-    } else
     if (AccountDTO::getInstance()->AccountExists($usernameSignup)) {
         echo "<script>alert('Tên tài khoản đã tồn tại')</script>";
     } else {
         $account = new Account();
         $account->SetUsername($usernameSignup)->SetPassword($passwordSignup)->SetEmail($emailSignup);
         if (AccountDTO::getInstance()->CreateAccount($account))
+        {
             echo "<script>alert('Tạo tài khoản thành công')</script>";
+            $id = AccountDTO::getInstance()->GetId($usernameSignup, $passwordSignup);
+            $_SESSION['idAccount'] = $id;
+            header("Location: ./Home-page.php");
+        }
         else
+        {
             echo "<script>alert('Tạo tài khoản thất bại')</script>";
+        }
     }
 }
 ?>
@@ -41,6 +47,20 @@ if (isset($_POST['usernameSignup'])) {
 <html lang="en">
 
 <head>
+<script type="text/javascript">
+        function validate() {
+            var password = document.forms["registerForm"]["passwordSignup"].value;
+            var repassword = document.forms["registerForm"]["re-passwordSignup"].value;
+            if (password != repassword) {
+                document.forms["registerForm"]["passwordSignup"].style.border = "1px solid red";
+                document.forms["registerForm"]["re-passwordSignup"].style.border = "1px solid red";
+                document.forms["registerForm"]["passwordSignup"].value = "";
+                document.forms["registerForm"]["re-passwordSignup"].value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,9 +76,9 @@ if (isset($_POST['usernameSignup'])) {
 
 </head>
 
-<body onload="checkFunction()">
+<body>
     <header class="header">
-        <a class="header__logo" href="#">
+        <a class="header__logo" href="./home-page.php">
             <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
             <h2>GoWorld</h2>
         </a>
@@ -77,9 +97,9 @@ if (isset($_POST['usernameSignup'])) {
             </div>
         </div>
         <div class="header__account">
-            <button class="header__account-btn primary-btn">Đăng nhập</button>
+            <!-- <button class="header__account-btn primary-btn">Đăng nhập</button>
             <button class="header__account-btn secondary-btn">Đăng ký</button>
-            <!-- <div class="header__account-user">
+             <div class="header__account-user">
                 <a href="">
                     <img src="../assets/img/avatar.png" alt="" class="header__account-user-img">
                 </a>
@@ -128,7 +148,7 @@ if (isset($_POST['usernameSignup'])) {
                     cập bằng tài khoản cá nhân của bạn</span>
             </div>
             <div class="container__form-signup">
-                <form method="POST" action="#" class="form-signup__form">
+                <form name ="registerForm" method="POST" action="#" class="form-signup__form" onsubmit="return validate()">
                     <input type="text" class="form-signup__form-username" name="usernameSignup" spellcheck="false" placeholder="Tên đăng nhập" value="<?php echo $usernameSignup ?>" required>
                     <input type="email" class="form-signup__form-email" name="emailSignup" spellcheck="false" placeholder="Địa chỉ email" value="<?php echo $emailSignup ?> " required>
                     <input type="password" class="form-signup__form-password" name="passwordSignup" spellcheck="false" placeholder="Mật khẩu" required>

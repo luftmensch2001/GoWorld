@@ -43,7 +43,8 @@ class AccountDTO
         ->SetFullName($row["fullName"])
         ->SetCmnd($row["cmnd"])
         ->SetUsername($row["userName"])
-        ->SetAddress($row["address"]);
+        ->SetAddress($row["address"])
+        ->SetPhoneNumber($row["phoneNumber"]);
       return $account;
     } else
       return null;
@@ -64,8 +65,6 @@ class AccountDTO
     $password = $account->GetPassword();
     $fullName = $account->GetFullName();
     $email = $account->GetEmail();
-    $cmnd = $account->GetCmnd();
-    $address = $account->GetAddress();
     $query = "Insert into account(userName, password, email,fullName) 
     values('$username','$password','$email','$fullName')";
     $result = DataProvider::getInstance()->Execute($query);
@@ -80,15 +79,15 @@ class AccountDTO
     $fullName = $account->GetFullName();
     $email = $account->GetEmail();
     $cmnd = $account->GetCmnd();
-    $sex = $account->GetSex();
     $address = $account->GetAddress();
+    $phoneNumber = $account->GetPhoneNumber();
     $query = "Update account Set userName = '$username',
         password = '".$password."',
         fullName = '$fullName',
         email = '$email',
         cmnd = $cmnd,
         address = '$address',
-        sex = '$sex' Where id= '$id'";
+        phoneNumber = '$phoneNumber' Where id= '$id'";
     $result = DataProvider::getInstance()->Execute($query);
     return $result;
   }

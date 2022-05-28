@@ -7,6 +7,7 @@ class Account {
         private $email;
         private $cmnd;
         private $address;
+        private $phoneNumber;
 
         public function __construct()
         {
@@ -75,5 +76,12 @@ class Account {
 
         function Getaddress() {
             return $this->address;
+        }
+        function SetPhoneNumber($phoneNumber){
+            $this->phoneNumber = $phoneNumber;
+            return $this;
+        }
+        function GetPhoneNumber() {
+            return $this->phoneNumber;
         }
     }

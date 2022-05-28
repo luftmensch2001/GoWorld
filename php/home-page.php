@@ -1,3 +1,20 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+error_reporting(E_ALL ^ E_NOTICE);
+$idAccount = $_SESSION['idAccount'];
+if ($idAccount != null&& $idAccount !=-1) {
+    $type = "none";
+    $type2 ="block";
+}
+else
+{
+    $type = "block";
+    $type2 = "none";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +32,7 @@
 </head>
 <body>
     <header class="header">
-        <a class="header__logo" href="#">
+        <a class="header__logo" href="./home-page.php">
             <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
             <h2>GoWorld</h2>
         </a>
@@ -33,16 +50,17 @@
                 <div class="header__underline"></div>
             </div>
         </div>
-        <div class="header__account">
-            <button class="header__account-btn primary-btn">Đăng nhập</button>
-            <button class="header__account-btn secondary-btn">Đăng ký</button>
-            <!-- <div class="header__account-user">
+        <div id="account" class="header__account" ><a href="./login.php">
+            <button  id="btLogin" class="header__account-btn primary-btn" style="display: <?php echo $type;?>"> Đăng nhập</button></a>
+            <a href="./login.php">
+            <button id ="btSignup" class="header__account-btn secondary-btn" style="display: <?php echo $type;?>">Đăng ký</button></a>
+            <div id="accountForm" class="header__account-user" style="display: <?php echo $type2;?>">
                 <a href="">
                     <img src="../assets/img/avatar.png" alt="" class="header__account-user-img">
                 </a>
                 <div class="header__account-user-menu">
                     <div class="account-user__info">
-                        <a href="">
+                        <a href="./setting.php">
                             <img src="../assets/img/avatar.png" alt=""  width="30px" height="30px">
                             <div>
                                 <span class="account-user__info-name">Họ Và Tên</span> <br>
@@ -59,13 +77,13 @@
                             <img src="../assets/img/setting.png" alt="">
                             <span>Cài đặt</span>
                         </a href="">
-                        <a href="" class="account-user__option-item">
+                        <a href="Logout.php" class="account-user__option-item">
                             <img src="../assets/img/logout.png" alt="">
                             <span>Đăng xuất</span>
-                        </a href="">
+                        </a>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </header>
     <div class="container">

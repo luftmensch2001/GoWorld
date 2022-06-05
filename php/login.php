@@ -5,6 +5,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 error_reporting(E_ALL ^ E_NOTICE);
+$idAccount = $_SESSION['idAccount'];
+if ($idAccount != null&& $idAccount !=-1) {
+    header("Location:setting.php");
+}
 if (isset($_POST['usernameLogin'])) {
     $usernameLogin = $_POST['usernameLogin'];
     $passwordLogin =  md5($_POST['passwordLogin']);
@@ -78,24 +82,7 @@ if (isset($_POST['usernameSignup'])) {
 
 <body>
     <header class="header">
-        <a class="header__logo" href="./home-page.php">
-            <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
-            <h2>GoWorld</h2>
-        </a>
-        <div class="header__navbar">
-            <div class="header__navbar-home">
-                <a href="">Trang chủ</a>
-                <div class="header__underline underline-show"></div>
-            </div>
-            <div class="header__navbar-blog">
-                <a href="">Blog</a>
-                <div class="header__underline"></div>
-            </div>
-            <div class="header__navbar-contact">
-                <a href="">Liên hệ</a>
-                <div class="header__underline"></div>
-            </div>
-        </div>
+        <?php include './View/HeaderA.php';?>
         <div class="header__account">
             <!-- <button class="header__account-btn primary-btn">Đăng nhập</button>
             <button class="header__account-btn secondary-btn">Đăng ký</button>
@@ -176,25 +163,7 @@ if (isset($_POST['usernameSignup'])) {
     </div>
 
     </div>
-    <footer class="footer">
-        <div class="footer__detail">
-            <div class="footer__header">GoWorld - Công Ty Đầu Tư Phát Triển Dịch Vụ Du Lịch</div>
-            <div>Địa chỉ: 12abc/34 D2, Q.Thủ Đức, Hồ Chí Minh</div>
-            <div>Mã số thuế: 0361263711</div>
-            <div>Website: <a href="">GoWorld.com</a></div>
-        </div>
-        <div class="footer__about">
-            <div class="footer__header">Về GoWorld</div>
-            <a href="">Tour</a>
-            <a href="">Blog</a>
-            <a href="">Liên hệ</a>
-        </div>
-        <div class="footer__contact">
-            <div class="footer__header">Tư vấn và hỗ trợ</div>
-            <div>Hotline: 09xx.xxx.xxx</div>
-            <div>Email: gowolrd@gmail.com</div>
-        </div>
-    </footer>
+    <?php include './View/Footer.php'?>
     <script src="../assets/js/login.js"></script>
 </body>
 

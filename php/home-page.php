@@ -1,15 +1,20 @@
 <?php
+require_once('./Controller/Account.php');
+require_once('./Model/AccountDTO.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 error_reporting(E_ALL ^ E_NOTICE);
 $idAccount = $_SESSION['idAccount'];
-if ($idAccount != null&& $idAccount !=-1) {
+if ($idAccount != null && $idAccount != -1) {
     $type = "none";
-    $type2 ="block";
-}
-else
-{
+    $type2 = "block";
+    $account = AccountDTO::getInstance()->GetAccount($idAccount);
+    if ($account==null) {
+        header("Location:Logout.php");
+    } else
+        $fullName = $account->GetFullName();
+} else {
     $type = "block";
     $type2 = "none";
 }
@@ -17,6 +22,7 @@ else
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +36,7 @@ else
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header class="header">
         <a class="header__logo" href="./home-page.php">
@@ -38,53 +45,19 @@ else
         </a>
         <div class="header__navbar">
             <div class="header__navbar-home">
-                <a href="">Trang chủ</a>
+                <a href="./home-page.php">Trang chủ</a>
                 <div class="header__underline underline-show"></div>
             </div>
             <div class="header__navbar-blog">
-                <a href="">Blog</a>
-                <div class="header__underline"></div>
+                <a href="./blog.php">Blog</a>
+                <div class="header__underline"></div>  
             </div>
             <div class="header__navbar-contact">
-                <a href="" >Liên hệ</a>
+                <a href="./contact.php">Liên hệ</a>
                 <div class="header__underline"></div>
             </div>
         </div>
-        <div id="account" class="header__account" ><a href="./login.php">
-            <button  id="btLogin" class="header__account-btn primary-btn" style="display: <?php echo $type;?>"> Đăng nhập</button></a>
-            <a href="./login.php">
-            <button id ="btSignup" class="header__account-btn secondary-btn" style="display: <?php echo $type;?>">Đăng ký</button></a>
-            <div id="accountForm" class="header__account-user" style="display: <?php echo $type2;?>">
-                <a href="">
-                    <img src="../assets/img/avatar.png" alt="" class="header__account-user-img">
-                </a>
-                <div class="header__account-user-menu">
-                    <div class="account-user__info">
-                        <a href="./setting.php">
-                            <img src="../assets/img/avatar.png" alt=""  width="30px" height="30px">
-                            <div>
-                                <span class="account-user__info-name">Họ Và Tên</span> <br>
-                                <span class="account-user__info-sub">Thông tin cá nhân</span> 
-                            </div>
-                        </a>
-                    </div>
-                    <div class="account-user__option">
-                        <a href="" class="account-user__option-item">
-                            <img src="../assets/img/history.png" alt="">
-                            <span>Lịch sử đặt tour</span>
-                        </a href="">
-                        <a href="" class="account-user__option-item">
-                            <img src="../assets/img/setting.png" alt="">
-                            <span>Cài đặt</span>
-                        </a href="">
-                        <a href="Logout.php" class="account-user__option-item">
-                            <img src="../assets/img/logout.png" alt="">
-                            <span>Đăng xuất</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php include './View/HeaderAccount.php'; ?>
     </header>
     <div class="container">
         <div class="container__box-search">
@@ -226,24 +199,7 @@ else
             <button> Cuối </button>
         </div>
     </div>
-    <footer class="footer">
-        <div class="footer__detail">
-            <div class="footer__header">GoWorld - Công Ty Đầu Tư Phát Triển Dịch Vụ Du Lịch</div>
-            <div>Địa chỉ: 12abc/34 D2, Q.Thủ Đức, Hồ Chí Minh</div>
-            <div>Mã số thuế: 0361263711</div>
-            <div>Website: <a href="">GoWorld.com</a></div>
-        </div>
-        <div class="footer__about">
-            <div class="footer__header">Về GoWorld</div>
-            <a href="">Tour</a>
-            <a href="">Blog</a>
-            <a href="">Liên hệ</a>
-        </div>
-        <div class="footer__contact">
-            <div class="footer__header">Tư vấn và hỗ trợ</div>
-            <div>Hotline: 09xx.xxx.xxx</div>
-            <div>Email: gowolrd@gmail.com</div>
-        </div>
-    </footer>
+    <?php include './View/Footer.php' ?>
 </body>
+
 </html>

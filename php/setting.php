@@ -7,11 +7,17 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $idAccount = $_SESSION['idAccount'];
 if ($idAccount == null || $idAccount == -1)
-  include './login.php';
+  header("Location:login.php");
 else {
 
+
+  $type = "none";
+  $type2 = "block";
   $account = new Account();
   $account = AccountDTO::getInstance()->GetAccount($idAccount);
+  if ($account == null) {
+    header("Location:Logout.php");
+  }
   $fullName = $account->GetFullName();
   $email = $account->GetEmail();
   $cmnd = $account->GetCmnd();
@@ -20,17 +26,29 @@ else {
   $password = $account->GetPassword();
 
   if (isset($_POST['submit'])) {
-      $fullName = $_POST['fullName'];
-      $email = $_POST['email'];
-      $cmnd = $_POST['cmnd'];
-      $phoneNumber = $_POST['phoneNumber'];
-      $address = $_POST['address'];
+    $fullName = $_POST['fullName'];
+    $email = $_POST['email'];
+    $cmnd = $_POST['cmnd'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $address = $_POST['address'];
 
-      $account->SetFullName($fullName)->SetEmail($email)->SetPhoneNumber($phoneNumber)->SetAddress($address);
-      if (AccountDTO::getInstance()->UpdateAccount($account))
-      {
-        echo "<script> alert('Thay đổi thông tin thành công') </script>";
-      }
+    $account->SetFullName($fullName)->SetEmail($email)->SetPhoneNumber($phoneNumber)->SetAddress($address);
+    if (AccountDTO::getInstance()->UpdateAccount($account)) {
+      echo "<script> alert('Thay đổi thông tin thành công') </script>";
+    }
+  }
+  if (isset($_POST['oldPassword'])) {
+    $oldPassword = md5($_POST['oldPassword']);
+    $password = $account->GetPassword();
+    $newPassword = $_POST['newPassword'];
+    if ($oldPassword != $password) {
+      echo '<script>alert("Sai mật khẫu!!!!!")</script>';
+    } else {
+      $password = md5($newPassword);
+      $account->SetPassword($password);
+      AccountDTO::getInstance()->UpdateAccount($account);
+      echo '<script>alert("Đổi mật khẩu thành công!!!!!")</script>';
+    }
   }
 }
 ?>
@@ -52,56 +70,9 @@ else {
 
 <body>
   <header class="header">
-    <a class="header__logo" href="./home-page.php">
-      <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
-      <h2>GoWorld</h2>
-    </a>
-    <div class="header__navbar">
-      <div class="header__navbar-home">
-        <a href="">Trang chủ</a>
-        <div class="header__underline underline-show"></div>
-      </div>
-      <div class="header__navbar-blog">
-        <a href="">Blog</a>
-        <div class="header__underline"></div>
-      </div>
-      <div class="header__navbar-contact">
-        <a href="">Liên hệ</a>
-        <div class="header__underline"></div>
-      </div>
-    </div>
-    <div id="account" class="header__account">
-      <div id="accountForm" class="header__account-user">
-        <a href="">
-          <img src="../assets/img/avatar.png" alt="" class="header__account-user-img">
-        </a>
-        <div class="header__account-user-menu">
-          <div class="account-user__info">
-            <a href="./setting.php">
-              <img src="../assets/img/avatar.png" alt="" width="30px" height="30px">
-              <div>
-                <span class="account-user__info-name">Họ Và Tên</span> <br>
-                <span class="account-user__info-sub">Thông tin cá nhân</span>
-              </div>
-            </a>
-          </div>
-          <div class="account-user__option">
-            <a href="" class="account-user__option-item">
-              <img src="../assets/img/history.png" alt="">
-              <span>Lịch sử đặt tour</span>
-            </a href="">
-            <a href="" class="account-user__option-item">
-              <img src="../assets/img/setting.png" alt="">
-              <span>Cài đặt</span>
-            </a href="">
-            <a href="Logout.php" class="account-user__option-item">
-              <img src="../assets/img/logout.png" alt="">
-              <span>Đăng xuất</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include './View/HeaderA.php'; ?>
+    <?php include './View/HeaderAccount.php'; ?>
+
   </header>
   <div>
     <h1 class="title">Cài đặt tài khoản</h1>
@@ -134,20 +105,27 @@ else {
           <input type="submit" name="submit" class="btn btn-primary btn-lg" value="Lưu thay đổi"></input>
         </form>
       </div>
-      <div class="col">
+      <form class="col" method="post" action="#" onsubmit="return CheckNewPassword()">
         <div class="row border border-dark rounded-3 p-5 mb-5 box">
           <h1>Đổi mật khẩu</h1>
-          <p>Bạn có thể đổi mật khẩu tài khoản tại đây. Mật khẩu phải có ít nhất 6 ký tự</p>
+          <div class="mb-3">
+            <label for="inputUsername" class="form-label">Mật khẩu cũ</label>
+            <input type="password" name="oldPassword" id="oldPassword" class="form-control"  id="inputUsername">
+          </div>
+          <div class="mb-3">
+            <label for="inputUsername" class="form-label">Mật khẩu mới</label>
+            <input type="password" name="newPassword" id="newPassword" class="form-control"  id="inputUsername">
+          </div>
+          <div class="mb-3">
+            <label for="inputUsername" class="form-label">Nhập lại mật khẩu mới</label>
+            <input type="password" name="reNewPassword" id="reNewPassword" class="form-control"  id="inputUsername">
+          </div>
           <button class="btn btn-primary btn-lg">Đổi mật khẩu</button>
         </div>
-        <!-- <div class="row border border-dark rounded-3 p-5 my-5 box">
-                    <h1>Đăng xuất</h1>
-                    <p>Bạn có thể đăng xuất tài khoản hiện tại tại đây</p>
-                    <button class="btn btn-primary btn-lg">Đăng xuất</button>
-                </div> -->
-      </div>
+      </form>
     </div>
   </div>
+  <script src="../assets/js/setting.js"></script>
 </body>
 
 </html>

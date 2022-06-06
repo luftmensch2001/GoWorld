@@ -52,9 +52,12 @@
     </div>
     
 </body>
-<script src="./ckeditor5-build-classic/ckeditor.js"></script>
+<script src="ckeditor/ckeditor.js"></script>
+<script src="ckfinder/ckfinder.js"></script>
 <script>
-    ClassicEditor
-    .create(document.querySelector('#editor'));
+    CKEDITOR.replace( 'editor', {
+	filebrowserBrowseUrl: './ckfinder/ckfinder/ckfinder.html',
+	filebrowserUploadUrl: './ckfinder/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+} );
 </script>
 </html>

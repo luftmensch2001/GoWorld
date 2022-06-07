@@ -52,6 +52,25 @@ class TourOrderDTO
         }
         return $listTourOrder;
     }
+    function GetListTourOrderByIdTour($idTour)
+    {
+        $query = "SELECT * FROM TourOrder Where idTour = '$idTour'";
+        $result = DataProvider::getInstance()->Execute($query);
+
+        $listTourOrder = array();
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tourOrder = new TourOrder();
+            $tourOrder->SetId($row["id"])
+                ->SetIdAccount($row["idAccount"])
+                ->SetIdTour($row["idTour"])
+                ->SetCountAdult($row["countAdult"])
+                ->SetCountChild($row["countChild"])
+                ->SetTotalPrice($row["totalPrice"]);
+            array_push($listTourOrder, $tourOrder);
+        }
+        return $listTourOrder;
+    }
     public function CreateTourOrder($tourOrder)
     {
         $idAccount = $tourOrder->GetIdAccount();

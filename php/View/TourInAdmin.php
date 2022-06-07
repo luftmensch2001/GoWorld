@@ -16,16 +16,19 @@ for ($i = 0; $i < count($listTour); $i++) {
 ?>
     <tr id="tour-1" class="tour-list-row" data-bs-toggle="modal" data-bs-target="#tourModal">
         <td class="text-center">
-            <img class="table-img" src="<?php echo $imageUrl?>" al="tour image" />
+            <img class="table-img" src="<?php echo $imageUrl ?>" al="tour image" />
         </td>
-        <td class="text-center"><?php echo $code?></td>
-        <td class="text-center"><?php echo $nameTour?></td>
-        <td class="text-center"><?php echo $priceAdult?></td>
-        <td class="text-center"><?php echo $priceChild?></td>
-        <td class="text-center"><?php echo $dateIn?></td>
-        <td class="text-center"><?php echo $dateOut?></td>
+        <td class="text-center"><?php echo $code ?></td>
+        <td class="text-center"><?php echo $nameTour ?></td>
+        <td class="text-center"><?php echo $priceAdult ?></td>
+        <td class="text-center"><?php echo $priceChild ?></td>
+        <td class="text-center"><?php echo $dateIn ?></td>
+        <td class="text-center"><?php echo $dateOut ?></td>
         <td class="text-center">
-            4 <i class="fa-regular fa-star"></i>
+            <form action="./tourOrder.php" method="post">
+                <input type="hidden" name="idTour" value="<?php echo $listTour[$i]->GetId() ?>">
+                <input type="submit" value="Xem danh sách">
+            </form>
         </td>
     </tr>
 <?php

@@ -1,6 +1,8 @@
 <?php
 require_once('./Controller/Account.php');
 require_once('./Model/AccountDTO.php');
+require_once('./Controller/Tour.php');
+require_once('./Model/TourDTO.php');
 error_reporting(E_ALL ^ E_NOTICE);
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
@@ -18,6 +20,11 @@ else {
   }
   if ($account->GetRole() == 0) {
     header("Location:Setting.php");
+  }
+  if (isset($_POST['idTour'])) {
+    $idTour = $_POST['idTour'];
+    $tour = TourDTO::getInstance()->GetTour($idTour);
+    $nameTour = $tour->GetNameTour();
   }
 }
 ?>
@@ -45,6 +52,7 @@ else {
     <?php include './View/HeaderA.php'; ?>
     <?php include './View/HeaderAccount.php'; ?>
   </header>
+  </table>
 
   <div>
     <h1 class="title mb-4">Tour</h1>
@@ -55,7 +63,7 @@ else {
     <div class="row">
       <div class="col-md-auto">
         <div id="sidenav" class="sidenav">
-          <a id="sidenav-tour" class="sidenav-link active" href="#">Danh Sách Tour</a>
+          <a id="sidenav-tour" class="sidenav-link active" href="#">Danh Sách Người đặt Tour: <?php echo $nameTour; ?></a>
         </div>
       </div>
       <div class="col" style="position:relative">
@@ -63,29 +71,29 @@ else {
           <table id="tableTours" class="table table-hover">
             <thead>
               <tr>
-                <th class="text-center">Hình ảnh</th>
-                <th class="text-center">Mã tour</th>
-                <th class="text-center">Tên tour</th>
-                <th class="text-center">Giá vé người lớn</th>
-                <th class="text-center">Giá vé trẻ em</th>
-                <th class="text-center">Thời gian đi</th>
-                <th class="text-center">Thời gian về</th>
-                <th class="text-center">Đánh giá </th>
+                <th class="text-center">Tên người đặt</th>
+                <th class="text-center">Số vé người lớn</th>
+                <th class="text-center">Số vé trẻ em</th>
+                <th class="text-center">CMND/CCCD</th>
+                <th class="text-center">email</th>
+                <th class="text-center">số điện thoại</th>
+                <th class="text-center">địa chỉ đón</th>
               </tr>
             </thead>
-            <tbody style="">
-              <?php include './View/TourInAdmin.php' ?>
+            <tbody>
+              <?php include './View/TourInListOrder.php' ?>
             </tbody>
           </table>
         </div>
       </div>
       <a href="./postTour.php">
-            <button style="position:fixed" id="btn-add" class="btn btn-outline-primary btn-circle btn-l position-absolute bottom-0 end-0 mb-2 me-2" type="button" aria-expanded="false">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-          </a>
+        <button style="position:fixed" id="btn-add" class="btn btn-outline-primary btn-circle btn-l position-absolute bottom-0 end-0 mb-2 me-2" type="button" aria-expanded="false">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </a>
     </div>
   </div>
+  <table>
 </body>
 
 </html>

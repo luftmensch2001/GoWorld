@@ -70,10 +70,9 @@ else {
                 <th class="text-center">Giá vé trẻ em</th>
                 <th class="text-center">Thời gian đi</th>
                 <th class="text-center">Thời gian về</th>
-                <th class="text-center">Đánh giá </th>
               </tr>
             </thead>
-            <tbody style="">
+            <tbody>
               <?php include './View/TourInAdmin.php' ?>
             </tbody>
           </table>

@@ -61,6 +61,7 @@ class TourDTO
         }
         return $listTour;
     }
+    
     public function ExistCode($code)
     {
         $query = "SELECT * FROM tour Where code = '$code'";

@@ -55,38 +55,6 @@ else {
   </div>
   <div class="container">
     <div class="row">
-      <!-- <table class="table">
-        <thead>
-          <tr class="filters">
-            <th>Địa điểm
-              <input type="text" id="search" class="form-control mt-2" placeholder="Nhập tên tour" />
-            </th>
-            <th>Số người
-              <select id="amount-filter" class="form-control mt-2">
-                <option>All</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-              </select>
-            </th>
-            <th>Ngày đến
-              <select id="arrivalDate-filter" class="form-control mt-2">
-                <option>All</option>
-                <option>19/04/2022</option>
-                <option>13/05/2022</option>
-              </select>
-            </th>
-            <th>Ngày đi
-              <select id="leaveDate-filter" class="form-control mt-2">
-                <option>All</option>
-                <option>19/04/2022</option>
-                <option>13/05/2022</option>
-              </select>
-            </th>
-          </tr>
-        </thead>
-      </table>-->
       <div class="panel panel-primary filterable border border-dark box">
         <table id="table" class="table table-hover">
           <thead>

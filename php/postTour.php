@@ -17,7 +17,8 @@ else {
     $account = AccountDTO::getInstance()->GetAccount($idAccount);
     if ($account == null) {
         header("Location:Logout.php");
-    }
+    } else
+        $fullName = $account->GetFullName();
     if (isset($_FILES['imageUrl'])) {
         $code = $_POST['code'];
         $nameTour = $_POST['nameTour'];
@@ -27,7 +28,7 @@ else {
         $priceChild = $_POST['priceChild'];
         $detail = $_POST['detail'];
         if (TourDTO::getInstance()->ExistCode($code)) {
-            echo "<script>alert('Mã tour đã tồn tại')";
+            echo "<script>alert('Mã tour đã tồn tại')</script>";
         } else {
             $uploaddir = '../assets/img/tours/';
             $rand1 = rand('1111111111', '9999999999');
@@ -41,7 +42,11 @@ else {
                 ->SetDateIn($dateIn)->SetDateOut($dateOut)
                 ->SetPriceAdult($priceAdult)->SetPriceChild($priceChild)
                 ->SetDetail($detail)->SetIdAccount($account->GetId());
-            TourDTO::getInstance()->CreateTour($tour);
+            if (TourDTO::getInstance()->CreateTour($tour))
+            {
+                echo "<script>alert('Thêm tour mới thành công')</script>";
+                header("Location:tour.php");
+            }
         }
     }
 }
@@ -56,6 +61,7 @@ else {
     <title>Đăng Tour</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/postTour.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,6 +71,10 @@ else {
 </head>
 
 <body>
+    <header class="header">
+        <?php include './View/HeaderA.php' ?>
+        <?php include './View/HeaderAccount.php' ?>
+    </header>
     <form enctype="multipart/form-data" class="container" action="#" method="post" onsubmit="return Check()">
         <h1 class="post__title">THÊM TOUR MỚI</h1>
         <img src="../assets/img/img-tour.png" id="image" alt="" class="post__img">
@@ -98,10 +108,10 @@ else {
             <input type="number" name="priceChild" id="priceChild" class="post__info-input" value="<?php echo $priceChild ?>" style="width: 300px" min="0" required="required">
         </div>
         <h2 class="post__info-title" style="font-size: 2.5em; margin-top: 40px">Mô tả về Tour</h2>
-        <textarea name="detail" id="editor" cols="30" rows="30" style="width:100%" ><?php echo $detail ?></textarea>
+        <textarea name="detail" id="editor" cols="30" rows="30" style="width:100%"><?php echo $detail ?></textarea>
         <div class="post__button-zone">
             <input type="submit" class="post__button" value="Thêm tour"></input>
-           <!-- <button class="post__button-2" type="reset" id="deleteButton">Xoá thông tin</button>-->
+            <!-- <button class="post__button-2" type="reset" id="deleteButton">Xoá thông tin</button>-->
         </div>
     </form>
 

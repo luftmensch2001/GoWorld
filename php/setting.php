@@ -18,6 +18,10 @@ else {
   if ($account == null) {
     header("Location:Logout.php");
   }
+  if ($account->GetRole()==1)
+  {
+    header("Location:Tour.php");
+  }
   $fullName = $account->GetFullName();
   $email = $account->GetEmail();
   $cmnd = $account->GetCmnd();

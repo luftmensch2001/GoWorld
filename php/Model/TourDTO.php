@@ -25,7 +25,7 @@ class TourDTO
             $row = $result->fetch_assoc();
             $tour = new Tour();
             $tour->SetId($row["id"])
-            ->SetImageUrl($row["imageUrl"])
+                ->SetImageUrl($row["imageURL"])
                 ->SetCode($row["code"])
                 ->SetNameTour($row["nameTour"])
                 ->SetDateIn($row["dateIn"])
@@ -38,15 +38,39 @@ class TourDTO
         } else
             return null;
     }
-    public function ExistCode($code){
-        $query = "SELECT * FROM tour Where code = '$code'";
-    $result = DataProvider::getInstance()->Execute($query);
-    $row = mysqli_num_rows($result);
-    if ($row > 0)
-      return true;
-    else
-      return false;
+    public function GetListTour()
+    {
+        $listTour = array();
+        $query = "SELECT * FROM Tour";
+        $result = DataProvider::getInstance()->Execute($query);
 
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tour = new Tour();
+            $tour->SetId($row["id"])
+                ->SetImageUrl($row["imageURL"])
+                ->SetCode($row["code"])
+                ->SetNameTour($row["nameTour"])
+                ->SetDateIn($row["dateIn"])
+                ->SetDateOut($row["dateOut"])
+                ->SetPriceAdult($row["priceAdult"])
+                ->SetPriceChild($row["priceChild"])
+                ->SetDetail($row["detail"])
+                ->SetIdAccount($row["idAccount"]);
+            echo $row["imageUrl"]."<br>";
+            array_push($listTour,$tour);
+        }
+        return $listTour;
+    }
+    public function ExistCode($code)
+    {
+        $query = "SELECT * FROM tour Where code = '$code'";
+        $result = DataProvider::getInstance()->Execute($query);
+        $row = mysqli_num_rows($result);
+        if ($row > 0)
+            return true;
+        else
+            return false;
     }
     public function CreateTour($tour)
     {

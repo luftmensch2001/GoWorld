@@ -44,8 +44,9 @@ class AccountDTO
         ->SetCmnd($row["cmnd"])
         ->SetUsername($row["userName"])
         ->SetAddress($row["address"])
-        ->SetPhoneNumber($row["phoneNumber"]);
-      return $account;
+        ->SetPhoneNumber($row["phoneNumber"])
+        ->SetRole($row["role"]);
+        return $account;
     } else
       return null;
   }

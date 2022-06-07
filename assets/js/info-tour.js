@@ -103,19 +103,19 @@ function increaseAdultTicketInConfirm() {
 
 
 function changeDateCome() {
-    dateCome.value = dateComeConfirm.value;
+    dateCome.innerHTML = dateComeConfirm.innerHTML;
 }
 
 function changeDateComeConfirm() {
-    dateComeConfirm.value = dateCome.value;
+    dateComeConfirm.innerHTML = dateCome.innerHTML;
 }
 
 function changeDateLeave() {
-    dateLeave.value = dateLeaveConfirm.value;
+    dateLeave.innerHTML = dateLeaveConfirm.innerHTML;
 }
 
 function changeDateLeaveConfirm() {
-    dateLeaveConfirm.value = dateLeave.value;
+    dateLeaveConfirm.innerHTML = dateLeave.innerHTML;
 }
 
 // add Event

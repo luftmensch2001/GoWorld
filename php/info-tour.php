@@ -20,11 +20,24 @@ if ($idAccount != null && $idAccount != -1) {
         $fullName = $account->GetFullName();
     if (isset($_POST['submit']))
     {
-        echo "<script>alert('Thêm tour mới thành công')</script>";
-
-
         $tourOrder = new tourOrder();
+        $idTour = $_POST['idTour'];
+        $countAdult = $_POST['hiddenCountAdult'];
+        $countChild = $_POST['hiddenCountChild'];
+        $totalPrice = $_POST['hiddenTotalPrice'];
 
+        $tourOrder->SetIdAccount($idAccount)
+        ->SetIdTour($idTour)
+        ->SetCountAdult($countAdult)
+        ->SetCountChild($countChild)
+        ->SetTotalPrice($totalPrice);
+
+        if (TourOrderDTO::getInstance()->CreateTourOrder($tourOrder)){
+            echo "<script>alert('Thêm tour mới thành công')</script>";
+
+            
+            header("Location:tour-history.php");
+        }
     }
 } else {
     $type = "block";
@@ -54,7 +67,7 @@ if ($idAccount != null && $idAccount != -1) {
     <header class="header">
         <?php include './View/HeaderA.php'; ?>
         <?php include './View/HeaderAccount.php'; ?>
-    </header>
+    </header> 
     <div class="container">
         <?php
         if (isset($_POST['idTour'])) {
@@ -104,18 +117,18 @@ if ($idAccount != null && $idAccount != -1) {
                         <span>Người lớn</span>
                         <div class="ticket-price adult-ticket">
                             <span class="adult-price"><?php echo $priceAdult ?></span>
-                            <button class="updown-btn">-</button>
+                            <button class="updown-btn" id="btDownCountAdult">-</button>
                             <span id="cntAdultTicket">1</span>
-                            <button class="updown-btn">+</button>
+                            <button class="updown-btn"id="btUpCountAdult">+</button>
                         </div>
                     </div>
                     <div class="ticket-type">
                         <span>Trẻ em</span>
                         <div class="ticket-price child-ticket">
                             <span class="child-price"><?php echo $priceChild ?></span>
-                            <button class="updown-btn">-</button>
+                            <button class="updown-btn" id="btDownCountChild">-</button>
                             <span id="cntChildTicket">0</span>
-                            <button class="updown-btn">+</button>
+                            <button class="updown-btn" id="btUpCountChild">+</button>
                         </div>
                     </div>
                 </div>
@@ -158,10 +171,8 @@ if ($idAccount != null && $idAccount != -1) {
                             Người lớn
                         </span>
                         <div class="book-confirm__row-content background-div adult-ticket-confirm">
-                            <button class="updown-btn">-</button>
-                            <input type="hidden" id="hiddenCountAdult" value="1">
+                            <input type="hidden" name="hiddenCountAdult" id="hiddenCountAdult" value="1">
                             <span id="cntAdultTicket-confirm">1</span>
-                            <button class="updown-btn">+</button>
                         </div>
                     </div>
                     <div class="book-confirm__row">
@@ -169,21 +180,28 @@ if ($idAccount != null && $idAccount != -1) {
                             Trẻ em
                         </span>
                         <div class="book-confirm__row-content background-div child-ticket-confirm">
-                            <button class="updown-btn">-</button>
-                            <input type="hidden" id="hiddenCountChild" value="0">
+                            <input type="hidden" name="hiddenCountChild" id="hiddenCountChild" value="0">
                             <span id="cntChildTicket-confirm">0</span>
-                            <button class="updown-btn">+</button>
                         </div>
                     </div>
                     <div class="book-confirm__row">
                         <span class="book-confirm__row-header">
                             Tổng giá
                         </span>
+                        <input type="hidden" name="hiddenTotalPrice" id="hiddenTotalPrice" value="1500000">;
                         <span id="book-confirm-price" class="book-confirm__row-content">
                             1.500.000 VNĐ
                         </span>
                     </div>
                 </div>
+                <?php
+                    $account = AccountDTO::getInstance()->GetAccount($idAccount);
+                    $fullName = $account->GetFullName();
+                    $cmnd = $account->GetCmnd();
+                    $email = $account->GetEmail();
+                    $phoneNumber = $account->GetPhoneNumber();
+                    $address = $account->GetAddress();
+                ?>
                 <div class="book-confirm__info-booker">
                     <span class="book-confirm__divheader">
                         Thông tin người đặt
@@ -193,7 +211,7 @@ if ($idAccount != null && $idAccount != -1) {
                             Họ tên
                         </h4>
                         <h4 class="book-confirm__row-content">
-                            Vũ Tân
+                            <?php echo $fullName; ?>
                         </h4>
                     </div>
                     <div class="book-confirm__row">
@@ -201,7 +219,7 @@ if ($idAccount != null && $idAccount != -1) {
                             CMND/CCCD
                         </h4>
                         <h4 class="book-confirm__row-content">
-                            0372307609
+                        <?php echo $cmnd; ?>
                         </h4>
                     </div>
                     <div class="book-confirm__row">
@@ -209,7 +227,7 @@ if ($idAccount != null && $idAccount != -1) {
                             Số điện thoại
                         </h4>
                         <h4 class="book-confirm__row-content">
-                            023703763067
+                        <?php echo $phoneNumber; ?>
                         </h4>
                     </div>
                     <div class="book-confirm__row">
@@ -217,7 +235,7 @@ if ($idAccount != null && $idAccount != -1) {
                             Địa chỉ email
                         </h4>
                         <h4 class="book-confirm__row-content">
-                            10375037@gm.uit.edu.vn
+                        <?php echo $email; ?>
                         </h4>
                     </div>
                     <div class="book-confirm__row">
@@ -225,21 +243,18 @@ if ($idAccount != null && $idAccount != -1) {
                             Địa điểm đón
                         </h4>
                         <h4 class="book-confirm__row-content">
-                            KTX Khu B, Đại học thành phố Hồ Chí Minh
+                        <?php echo $address; ?>
                         </h4>
                     </div>
                 </div>
                 <div class="book-confirm__btn">
-                    <input type="submit" name="submit" value="Xác nhận"class="btn-confirm">
+                    <input class="book-confirm__btn" style="background-color:var(--primary-color);color:white" type="submit" name="submit" value="Xác nhận"class="btn-confirm">
                     </input>
-                    <button id="btn-cancel-booktour" class="btn-cancel">
-                        Huỷ bỏ
-                    </button>
                 </div>
             </div>
         </div>
     </form>
-    <script src="../assets/js/info-tour.js"></script>
+    <script src="../assets/js/info-tour3.js"></script>
 </body>
 
 </html>

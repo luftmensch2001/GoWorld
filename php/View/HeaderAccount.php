@@ -17,11 +17,11 @@
                         </a>
                     </div>
                     <div class="account-user__option">
-                        <a href="" class="account-user__option-item">
+                        <a href="./tour-history.php" class="account-user__option-item">
                             <img src="../assets/img/history.png" alt="">
                             <span>Lịch sử đặt tour</span>
                         </a href="">
-                        <a href="" class="account-user__option-item">
+                        <a href="./setting.php" target="_blank"class="account-user__option-item">
                             <img src="../assets/img/setting.png" alt="">
                             <span>Cài đặt</span>
                         </a href="">

@@ -57,7 +57,6 @@ class TourDTO
                 ->SetPriceChild($row["priceChild"])
                 ->SetDetail($row["detail"])
                 ->SetIdAccount($row["idAccount"]);
-            echo $row["imageUrl"]."<br>";
             array_push($listTour,$tour);
         }
         return $listTour;

@@ -14,7 +14,6 @@ for ($i = 0; $i < count($listTour); $i++) {
     $dateIn = $listTour[$i]->GetDateIn();
     $dateOut = $listTour[$i]->GetDateOut();
 ?>
-
     <tr id="tour-1" class="tour-list-row" data-bs-toggle="modal" data-bs-target="#tourModal">
         <td class="text-center">
             <img class="table-img" src="<?php echo $imageUrl?>" al="tour image" />
@@ -29,8 +28,6 @@ for ($i = 0; $i < count($listTour); $i++) {
             4 <i class="fa-regular fa-star"></i>
         </td>
     </tr>
-
-
 <?php
 }
 ?>

@@ -1,13 +1,17 @@
 <?php
 require_once('./Controller/Account.php');
 require_once('./Model/AccountDTO.php');
+require_once('./Controller/Tour.php');
+require_once('./Model/TourDTO.php');
+require_once('./Controller/TourOrder.php');
+require_once('./Model/TourOrderDTO.php');
 error_reporting(E_ALL ^ E_NOTICE);
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 $idAccount = $_SESSION['idAccount'];
-if ($idAccount == null || $idAccount == -1) 
-    header("Location:login.php");
+if ($idAccount == null || $idAccount == -1)
+  header("Location:login.php");
 else {
 
   $type = "none";
@@ -17,27 +21,6 @@ else {
   if ($account == null) {
     header("Location:Logout.php");
   }
-  $fullName = $account->GetFullName();
-  
-  $email = $account->GetEmail();
-  $cmnd = $account->GetCmnd();
-  $phoneNumber = $account->GetPhoneNumber();
-  $address = $account->GetAddress();
-  $password = $account->GetPassword();
-
-  if (isset($_POST['submit'])) {
-      $fullName = $_POST['fullName'];
-      $email = $_POST['email'];
-      $cmnd = $_POST['cmnd'];
-      $phoneNumber = $_POST['phoneNumber'];
-      $address = $_POST['address'];
-
-      $account->SetFullName($fullName)->SetEmail($email)->SetPhoneNumber($phoneNumber)->SetAddress($address);
-      if (AccountDTO::getInstance()->UpdateAccount($account))
-      {
-        echo "<script> alert('Thay đổi thông tin thành công') </script>";
-      }
-  }
 }
 ?>
 
@@ -45,7 +28,7 @@ else {
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/tour-history.css" />
 
@@ -61,18 +44,18 @@ else {
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <header class="header">
-    <?php include './View/HeaderA.php'; ?>
-    <?php include './View/HeaderAccount.php'; ?>
-  </header>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header class="header">
+      <?php include './View/HeaderA.php'; ?>
+      <?php include './View/HeaderAccount.php'; ?>
+    </header>
+  </nav>
   <div>
     <h1 class="title">Lịch sử các tour đã đặt</h1>
   </div>
   <div class="container">
     <div class="row">
-      <table class="table">
+      <!-- <table class="table">
         <thead>
           <tr class="filters">
             <th>Địa điểm
@@ -103,14 +86,16 @@ else {
             </th>
           </tr>
         </thead>
-      </table>
+      </table>-->
       <div class="panel panel-primary filterable border border-dark box">
         <table id="table" class="table table-hover">
           <thead>
             <tr>
               <th class="text-center">Mã tour</th>
               <th class="text-center">Tên tour</th>
-              <th class="text-center">Giá vé</th>
+              <th class="text-center">Giá vé người lớn</th>
+              <th class="text-center">Số người</th>
+              <th class="text-center">Giá vé trẻ em</th>
               <th class="text-center">Số người</th>
               <th class="text-center">Ngày đến</th>
               <th class="text-center">Ngày đi</th>
@@ -119,43 +104,34 @@ else {
           </thead>
 
           <tbody>
-
-            <tr id="tour-1" class="tour-list-row" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <td class="text-center">1</td>
-              <td class="text-center">Tour du lịch Cát Bà</td>
-              <td class="text-center">1,500,000</td>
-              <td class="text-center">1</td>
-              <td class="text-center">19/04/2022</td>
-              <td class="text-center">19/04/2022</td>
-              <td class="text-center">1,500,000</td>
-            </tr>
-            <tr id="tour-2" class="tour-list-row">
-              <td class="text-center">2</td>
-              <td class="text-center">Tour du lịch Phan Thiết</td>
-              <td class="text-center">1,500,000</td>
-              <td class="text-center">2</td>
-              <td class="text-center">13/05/2022</td>
-              <td class="text-center">13/05/2022</td>
-              <td class="text-center">3,000,000</td>
-            </tr>
-            <tr id="tour-3" class="tour-list-row">
-              <td class="text-center">4</td>
-              <td class="text-center">Tour du lịch Nha Trang</td>
-              <td class="text-center">2,500,000</td>
-              <td class="text-center">3</td>
-              <td class="text-center">19/04/2022</td>
-              <td class="text-center">13/05/2022</td>
-              <td class="text-center">7,500,000</td>
-            </tr>
-            <tr id="tour-4" class="tour-list-row">
-              <td class="text-center">4</td>
-              <td class="text-center">Tour du lịch Sa Pa</td>
-              <td class="text-center">1,500,000</td>
-              <td class="text-center">4</td>
-              <td class="text-center">19/04/2022</td>
-              <td class="text-center">19/04/2022</td>
-              <td class="text-center">6,000,000</td>
-            </tr>
+            <?php
+            $listTourOrder = TourOrderDTO::getInstance()->GetListTourOrder($idAccount);
+            for ($i = 0; $i < count($listTourOrder); $i++) {
+              $tour = TourDTO::getInstance()->GetTour($listTourOrder[$i]->GetIdTour());
+              $code = $tour->GetCode();
+              $nameTour = $tour->GetNameTour();
+              $priceAdult = $tour->GetPriceAdult();
+              $priceChild = $tour->GetPriceChild();
+              $dateIn = $tour->GetDateIn();
+              $dateOut = $tour->GetDateOut();
+              $countAdult = $listTourOrder[$i]->GetCountAdult();
+              $countChild = $listTourOrder[$i]->GetCountChild();
+              $totalPrice = $listTourOrder[$i]->GetTotalPrice();
+            ?>
+              <tr id="tour-1" class="tour-list-row" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <td class="text-center"><?php echo $code ?></td>
+                <td class="text-center"><?php echo $nameTour ?></td>
+                <td class="text-center"><?php echo $priceAdult ?></td>
+                <td class="text-center"><?php echo $countAdult ?></td>
+                <td class="text-center"><?php echo $priceChild ?></td>
+                <td class="text-center"><?php echo $countChild ?></td>
+                <td class="text-center"><?php echo $dateIn ?></td>
+                <td class="text-center"><?php echo $dateOut ?></td>
+                <td class="text-center"><?php echo $totalPrice ?></td>
+              </tr>
+            <?php
+            }
+            ?>
           </tbody>
         </table>
       </div>

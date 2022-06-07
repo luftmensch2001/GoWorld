@@ -10,7 +10,7 @@ class TourOrderDTO
     public static function getInstance()
     {
         if (self::$_instance == null) {
-            self::$_instance = new TourDTO();
+            self::$_instance = new TourOrderDTO();
         }
         return self::$_instance;
     }
@@ -24,14 +24,33 @@ class TourOrderDTO
             $row = $result->fetch_assoc();
             $tourOrder = new TourOrder();
             $tourOrder->SetId($row["id"])
-                    ->SetIdAccount($row["idAccount"])
-                    ->SetIdTour($row["idTour"])
-                    ->SetCountAdult($row["countAdult"])
-                    ->SetCountChild($row["countChild"])
-                    ->SetTotalPrice($row["totalPrice"]);
+                ->SetIdAccount($row["idAccount"])
+                ->SetIdTour($row["idTour"])
+                ->SetCountAdult($row["countAdult"])
+                ->SetCountChild($row["countChild"])
+                ->SetTotalPrice($row["totalPrice"]);
             return $tourOrder;
         } else
             return null;
+    }
+    function GetListTourOrder($idAccount)
+    {
+        $query = "SELECT * FROM TourOrder Where idAccount = '$idAccount'";
+        $result = DataProvider::getInstance()->Execute($query);
+
+        $listTourOrder = array();
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tourOrder = new TourOrder();
+            $tourOrder->SetId($row["id"])
+                ->SetIdAccount($row["idAccount"])
+                ->SetIdTour($row["idTour"])
+                ->SetCountAdult($row["countAdult"])
+                ->SetCountChild($row["countChild"])
+                ->SetTotalPrice($row["totalPrice"]);
+            array_push($listTourOrder, $tourOrder);
+        }
+        return $listTourOrder;
     }
     public function CreateTourOrder($tourOrder)
     {

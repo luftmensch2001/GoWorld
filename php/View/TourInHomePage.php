@@ -16,7 +16,7 @@ for ($i = 0; $i < count($listTour); $i++) {
     $dateOut = $listTour[$i]->GetDateOut();
 ?>
     <form class="tour-item" method="post" action="./info-tour.php">
-        <img src="<?php echo $imageUrl?>" alt="" width="340px" height="220px">
+        <img src="<?php echo $imageUrl?>" alt="" width="340px" height=" 220px">
         <input type="hidden" name="idTour" value="<?php echo $id?>">
         <div class="tour-item__header">
             <span><?php echo $nameTour?></span> 
@@ -28,7 +28,7 @@ for ($i = 0; $i < count($listTour); $i++) {
                 <img src="../assets/img/downvote.png">
             </div>
             <div class="row-end">
-                <div class="tour-item__price"><?php echo $priceAdult?></div>
+                <div class="tour-item__price"><?php echo $priceAdult?> VNĐ</div>
                 <button class="primary-btn">Xem tour</button>
             </div>
         </div>

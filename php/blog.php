@@ -10,7 +10,7 @@ if ($idAccount != null && $idAccount != -1) {
     $type = "none";
     $type2 = "block";
     $account = AccountDTO::getInstance()->GetAccount($idAccount);
-    if ($account==null) {
+    if ($account == null) {
         header("Location:Logout.php");
     } else
         $fullName = $account->GetFullName();
@@ -67,106 +67,7 @@ if ($idAccount != null && $idAccount != -1) {
             </span>
         </div>
         <div class="container__hot-blog">
-            <div class="container__hot-blog-col-left col l-5">
-                <div class="container__hot-blog-big">
-                    <a href="" class="container__hot-blog-big-img link">
-                        <img src="../assets/img/BackImgLogin.png" alt="">
-                    </a>
-                    <div class="container__hot-blog-big-text">
-                        <a href="" class="container__hot-blog-big-header link">
-                            Địa điểm đáng du lịch 2021
-                        </a>
-                        <p class="container__hot-blog-big-content">
-                            Đối với nhiều người, mùa hè là khoảng thời gian "đáng sợ" với nắng gió bỏng rát, không khí ngột ngạt, và cứ nghĩ đến du lịch vào khoảng thời gian này thì ai cũng sẽ nghĩ đến biển xanh, cát trắng, nắng vàng, nơi mà chúng ta có thể thoải mái vùng vẫy và "trốn thoát" khỏi sự ngột ngạt của mùa hè chốn đô thị đông đúc, náo nhiệt.
-                            <br>HoaBinh Tourist có cách giúp bạn biến mùa hè "ác mộng" ấy trở thành thiên đường. Với top 10 địa điểm du lịch hot nhất năm 2021, hãy cùng lưu lại nhé, quên đi cơn nóng của mùa hè và “refresh” lại tinh thần ngay thôi!
-                        </p>
-                        <div class="container__hot-blog-info upload-info">
-                            <div class="date-upload">19/04/2022</div>
-                            <div class="author">By Tan1234</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container__hot-blog-col-right col l-7">
-                <div class="row container__hot-blog-col-right-row">
-                    <div class="container__hot-blog-small c-o-1 l-5">
-                        <div class="container__hot-blog-small-item">
-                            <a href="" class="container__hot-blog-small-img link">
-                                <img src="../assets/img/BackImgLogin.png" alt="">
-                            </a>
-                            <div class="container__hot-blog-small-text">
-                                <a href="" class="container__hot-blog-small-header link">
-                                    7 điều thú vị về đảo Phú Quốc
-                                </a>
-                                <p class="container__hot-blog-small-content">
-                                    Với 150km đường bờ biển, Phú Quốc sở hữu nhiều bãi biển đẹp trải dài từ phía bắc đến phía nam. Đến đây, du khách ...
-                                </p>
-                                <div class="container__hot-blog-info upload-info">
-                                    <div class="date-upload">19/04/2022</div>
-                                    <div class="author">By Tan1234</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container__hot-blog-small c-o-1 l-5">
-                        <div class="container__hot-blog-small-item">
-                            <a href="" class="container__hot-blog-small-img link">
-                                <img src="../assets/img/BackImgLogin.png" alt="">
-                            </a>
-                            <div class="container__hot-blog-small-text">
-                                <a href="" class="container__hot-blog-small-header link">
-                                    7 điều thú vị về đảo Phú Quốc
-                                </a>
-                                <p class="container__hot-blog-small-content">
-                                    Với 150km đường bờ biển, Phú Quốc sở hữu nhiều bãi biển đẹp trải dài từ phía bắc đến phía nam. Đến đây, du khách ...
-                                </p>
-                                <div class="container__hot-blog-info upload-info">
-                                    <div class="date-upload">19/04/2022</div>
-                                    <div class="author">By Tan1234</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container__hot-blog-small c-o-1 l-5">
-                        <div class="container__hot-blog-small-item">
-                            <a href="" class="container__hot-blog-small-img link">
-                                <img src="../assets/img/BackImgLogin.png" alt="">
-                            </a>
-                            <div class="container__hot-blog-small-text">
-                                <a href="" class="container__hot-blog-small-header link">
-                                    7 điều thú vị về đảo Phú Quốc
-                                </a>
-                                <p class="container__hot-blog-small-content">
-                                    Với 150km đường bờ biển, Phú Quốc sở hữu nhiều bãi biển đẹp trải dài từ phía bắc đến phía nam. Đến đây, du khách ...
-                                </p>
-                                <div class="container__hot-blog-info upload-info">
-                                    <div class="date-upload">19/04/2022</div>
-                                    <div class="author">By Tan1234</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container__hot-blog-small c-o-1 l-5">
-                        <div class="container__hot-blog-small-item">
-                            <a href="" class="container__hot-blog-small-img link">
-                                <img src="../assets/img/BackImgLogin.png" alt="">
-                            </a>
-                            <div class="container__hot-blog-small-text">
-                                <a href="" class="container__hot-blog-small-header link">
-                                    7 điều thú vị về đảo Phú Quốc
-                                </a>
-                                <p class="container__hot-blog-small-content">
-                                    Với 150km đường bờ biển, Phú Quốc sở hữu nhiều bãi biển đẹp trải dài từ phía bắc đến phía nam. Đến đây, du khách ...
-                                </p>
-                                <div class="container__hot-blog-info upload-info">
-                                    <div class="date-upload">19/04/2022</div>
-                                    <div class="author">By Tan1234</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php include './View/BlogInBlog.php'?>
         </div>
         <div class="container__newest-blog">
             <div class="container__header">

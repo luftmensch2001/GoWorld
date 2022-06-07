@@ -55,8 +55,8 @@ else {
     <div class="row">
       <div class="col-md-auto">
         <div id="sidenav" class="sidenav">
-          <a id="sidenav-tour" class="sidenav-link active" href="#">Danh Sách Tour</a>
-          <a id="sidenav-tour" href="./blogAdmin.php">Danh Sách Blog</a>
+          <a id="sidenav-tour" class="sidenav-link active" href="#">Danh Sách Blog</a>
+          <a id="sidenav-tour" href="./tour.php">Danh Sách Tour</a>
         </div>
       </div>
       <div class="col" style="position:relative">
@@ -65,25 +65,22 @@ else {
             <thead>
               <tr>
                 <th class="text-center">Hình ảnh</th>
-                <th class="text-center">Mã tour</th>
-                <th class="text-center">Tên tour</th>
-                <th class="text-center">Giá vé người lớn</th>
-                <th class="text-center">Giá vé trẻ em</th>
-                <th class="text-center">Thời gian đi</th>
-                <th class="text-center">Thời gian về</th>
+                <th class="text-center">Tên Blog</th>
+                <th class="text-center">Ngày đăng</th>
+                <th class="text-center">Lượt xem</th>
               </tr>
             </thead>
             <tbody>
-              <?php include './View/TourInAdmin.php' ?>
+              <?php include './View/BlogInAdmin.php' ?>
             </tbody>
           </table>
         </div>
       </div>
-      <a href="./postTour.php">
-            <button style="position:fixed" id="btn-add" class="btn btn-outline-primary btn-circle btn-l position-absolute bottom-0 end-0 mb-2 me-2" type="button" aria-expanded="false">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-          </a>
+      <a href="./postBlog.php">
+        <button style="position:fixed" id="btn-add" class="btn btn-outline-primary btn-circle btn-l position-absolute bottom-0 end-0 mb-2 me-2" type="button" aria-expanded="false">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </a>
     </div>
   </div>
 </body>

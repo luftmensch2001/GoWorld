@@ -29,7 +29,7 @@ if ($idAccount != null && $idAccount != -1) {
     <title>Tour - Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/blog.css">
+    <link rel="stylesheet" href="../assets/css/blog3.css">
     <link rel="stylesheet" href="../assets/css/grid.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,112 +74,10 @@ if ($idAccount != null && $idAccount != -1) {
                 <span>
                     BÀI MỚI NHẤT
                 </span>
-                <a href="">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="./full-blog.php">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="container__newest-blog-list row">
-                <div class="container__newest-blog-item">
-                    <a class="container__newest-blog-item-img" href="">
-                        <img src="../assets/img/BackImgLogin.png" alt="">
-                    </a>
-                    <div class="container__newest-blog-item-text">
-                        <a href="" class="container__newest-blog-item-header link">
-                            Du lịch Tam Đảo cần chú ý những gì..
-                        </a>
-                        <p class="container__newest-blog-item-content">
-                            Được mệnh danh là Đà Lạt của miền Bắc với làn sương mờ ảo và tiết trời se lạnh, Tam Đảo là địa điểm “đi trốn” yêu thích của nhiều tín đồ du lịch. Bỏ túi kinh nghiệm du lịch Tam Đảo từ A tới Z cùng Ví MoMo và sẵn sàng tận hưởng một kỳ nghỉ tuyệt...
-                        </p>
-                        <div class="container__newest-blog-item-info upload-info">
-                            <div class="date-upload">19/04/2022</div>
-                            <div class="author">By Tan1234</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container__newest-blog-item">
-                    <a class="container__newest-blog-item-img" href="">
-                        <img src="../assets/img/BackImgLogin.png" alt="">
-                    </a>
-                    <div class="container__newest-blog-item-text">
-                        <a href="" class="container__newest-blog-item-header link">
-                            Du lịch Tam Đảo cần chú ý những gì..
-                        </a>
-                        <p class="container__newest-blog-item-content">
-                            Được mệnh danh là Đà Lạt của miền Bắc với làn sương mờ ảo và tiết trời se lạnh, Tam Đảo là địa điểm “đi trốn” yêu thích của nhiều tín đồ du lịch. Bỏ túi kinh nghiệm du lịch Tam Đảo từ A tới Z cùng Ví MoMo và sẵn sàng tận hưởng một kỳ nghỉ tuyệt...
-                        </p>
-                        <div class="container__newest-blog-item-info upload-info">
-                            <div class="date-upload">19/04/2022</div>
-                            <div class="author">By Tan1234</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container__newest-blog-item">
-                    <a class="container__newest-blog-item-img" href="">
-                        <img src="../assets/img/BackImgLogin.png" alt="">
-                    </a>
-                    <div class="container__newest-blog-item-text">
-                        <a href="" class="container__newest-blog-item-header link">
-                            Du lịch Tam Đảo cần chú ý những gì..
-                        </a>
-                        <p class="container__newest-blog-item-content">
-                            Được mệnh danh là Đà Lạt của miền Bắc với làn sương mờ ảo và tiết trời se lạnh, Tam Đảo là địa điểm “đi trốn” yêu thích của nhiều tín đồ du lịch. Bỏ túi kinh nghiệm du lịch Tam Đảo từ A tới Z cùng Ví MoMo và sẵn sàng tận hưởng một kỳ nghỉ tuyệt...
-                        </p>
-                        <div class="container__newest-blog-item-info upload-info">
-                            <div class="date-upload">19/04/2022</div>
-                            <div class="author">By Tan1234</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container__newest-blog-item">
-                    <a class="container__newest-blog-item-img" href="">
-                        <img src="../assets/img/BackImgLogin.png" alt="">
-                    </a>
-                    <div class="container__newest-blog-item-text">
-                        <a href="" class="container__newest-blog-item-header link">
-                            Du lịch Tam Đảo cần chú ý những gì..
-                        </a>
-                        <p class="container__newest-blog-item-content">
-                            Được mệnh danh là Đà Lạt của miền Bắc với làn sương mờ ảo và tiết trời se lạnh, Tam Đảo là địa điểm “đi trốn” yêu thích của nhiều tín đồ du lịch. Bỏ túi kinh nghiệm du lịch Tam Đảo từ A tới Z cùng Ví MoMo và sẵn sàng tận hưởng một kỳ nghỉ tuyệt...
-                        </p>
-                        <div class="container__newest-blog-item-info upload-info">
-                            <div class="date-upload">19/04/2022</div>
-                            <div class="author">By Tan1234</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container__newest-blog-item">
-                    <a class="container__newest-blog-item-img" href="">
-                        <img src="../assets/img/BackImgLogin.png" alt="">
-                    </a>
-                    <div class="container__newest-blog-item-text">
-                        <a href="" class="container__newest-blog-item-header link">
-                            Du lịch Tam Đảo cần chú ý những gì..
-                        </a>
-                        <p class="container__newest-blog-item-content">
-                            Được mệnh danh là Đà Lạt của miền Bắc với làn sương mờ ảo và tiết trời se lạnh, Tam Đảo là địa điểm “đi trốn” yêu thích của nhiều tín đồ du lịch. Bỏ túi kinh nghiệm du lịch Tam Đảo từ A tới Z cùng Ví MoMo và sẵn sàng tận hưởng một kỳ nghỉ tuyệt...
-                        </p>
-                        <div class="container__newest-blog-item-info upload-info">
-                            <div class="date-upload">19/04/2022</div>
-                            <div class="author">By Tan1234</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container__newest-blog-item">
-                    <a class="container__newest-blog-item-img" href="">
-                        <img src="../assets/img/BackImgLogin.png" alt="">
-                    </a>
-                    <div class="container__newest-blog-item-text">
-                        <a href="" class="container__newest-blog-item-header link">
-                            Du lịch Tam Đảo cần chú ý những gì..
-                        </a>
-                        <p class="container__newest-blog-item-content">
-                            Được mệnh danh là Đà Lạt của miền Bắc với làn sương mờ ảo và tiết trời se lạnh, Tam Đảo là địa điểm “đi trốn” yêu thích của nhiều tín đồ du lịch. Bỏ túi kinh nghiệm du lịch Tam Đảo từ A tới Z cùng Ví MoMo và sẵn sàng tận hưởng một kỳ nghỉ tuyệt...
-                        </p>
-                        <div class="container__newest-blog-item-info upload-info">
-                            <div class="date-upload">19/04/2022</div>
-                            <div class="author">By Tan1234</div>
-                        </div>
-                    </div>
-                </div>
-
+                <?php include './View/BlogInBlogNew.php'?>
             </div>
         </div>
     </div>

@@ -218,3 +218,9 @@ a:hover {
     bottom: 0;
     width: 100%;
 }
+
+input {
+    background-color: white;
+    border: none;
+    text-align: left;
+}

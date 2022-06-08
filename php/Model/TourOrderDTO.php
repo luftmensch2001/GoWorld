@@ -103,4 +103,11 @@ class TourOrderDTO
         $result = DataProvider::getInstance()->Execute($query);
         return $result;
     }
+    public function DeleteTourOrder($idTourOrder)
+    {
+        $query = "DELETE FROM `tourOrder` WHERE id = '$idTourOrder'";
+        $result = DataProvider::getInstance()->Execute($query);
+        echo $query;
+        return $result;
+    }
 }

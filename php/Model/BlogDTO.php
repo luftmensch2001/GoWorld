@@ -29,6 +29,7 @@ class BlogDTO
                 ->SetNameBlog($row["nameBlog"])
                 ->SetDetail($row["detail"])
                 ->SetDate($row["date"])
+                ->SetSummary($row["summary"])
                 ->SetCountAccess($row["countAccess"])
                 ->SetIdAccount($row["idAccount"]);
             return $Blog;
@@ -49,16 +50,17 @@ class BlogDTO
                 ->SetNameBlog($row["nameBlog"])
                 ->SetDetail($row["detail"])
                 ->SetDate($row["date"])
+                ->SetSummary($row["summary"])
                 ->SetCountAccess($row["countAccess"])
                 ->SetIdAccount($row["idAccount"]);
             array_push($listBlog, $Blog);
         }
         return $listBlog;
     }
-    public function GetListBlogOrderByCountAccess()
+    public function GetListBlogNew()
     {
         $listBlog = array();
-        $query = "SELECT * FROM Blog ORDER BY countAccess";
+        $query = "SELECT * FROM `blog` ORDER BY date DESC";
         $result = DataProvider::getInstance()->Execute($query);
 
         $row = mysqli_num_rows($result);
@@ -69,6 +71,28 @@ class BlogDTO
                 ->SetNameBlog($row["nameBlog"])
                 ->SetDetail($row["detail"])
                 ->SetDate($row["date"])
+                ->SetCountAccess($row["countAccess"])
+                ->SetSummary($row["summary"])
+                ->SetIdAccount($row["idAccount"]);
+            array_push($listBlog, $Blog);
+        }
+        return $listBlog;
+    }
+    public function GetListBlogOrderByCountAccess()
+    {
+        $listBlog = array();
+        $query = "SELECT * FROM Blog ORDER BY countAccess DESC";
+        $result = DataProvider::getInstance()->Execute($query);
+
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $Blog = new Blog();
+            $Blog->SetId($row["id"])
+                ->SetImageUrl($row["imageURL"])
+                ->SetNameBlog($row["nameBlog"])
+                ->SetDetail($row["detail"])
+                ->SetDate($row["date"])
+                ->SetSummary($row["summary"])
                 ->SetCountAccess($row["countAccess"])
                 ->SetIdAccount($row["idAccount"]);
             array_push($listBlog, $Blog);
@@ -82,8 +106,9 @@ class BlogDTO
         $detail = $Blog->GetDetail();
         $date = $Blog->GetDate();
         $idAccount = $Blog->GetIdAccount();
-        $query = "Insert into Blog(imageUrl,nameBlog,detail,idAccount,date) 
-    values('$imageUrl','$nameBlog','$detail','$idAccount','$date')";
+        $summary = $Blog->GetSummary();
+        $query = "Insert into Blog(imageUrl,nameBlog,detail,idAccount,date,summary) 
+    values('$imageUrl','$nameBlog','$detail','$idAccount','$date','$summary')";
         $result = DataProvider::getInstance()->Execute($query);
 
         return $result;
@@ -96,12 +121,14 @@ class BlogDTO
         $detail = $Blog->GetDetail();
         $idAccount = $Blog->GetIdAccount();
         $countAccess = $Blog->GetCountAccess();
+        $summary = $Blog->GetSummary();
         $date = $Blog->GetDate();
         $query = "Update Blog set 
             imageUrl='$imageUrl',
             nameBlog='$nameBlog',
             detail='$detail',
             date='$date',
+            summary='$summary',
             countAccess='$countAccess',
             idAccount='$idAccount' WHERE id ='$id'";
         $result = DataProvider::getInstance()->Execute($query);
@@ -112,6 +139,18 @@ class BlogDTO
         $query = "DELETE FROM `blog` WHERE id = '$idBlog'";
         $result = DataProvider::getInstance()->Execute($query);
         echo $query;
+        return $result;
+    }
+    public function IncreaseCountAccessBlog($blog)
+    {
+        $id = $blog->GetId();
+        $countAccess = $blog->GetCountAccess();
+        $countAccess++;
+        $query = "Update Blog set 
+            countAccess='$countAccess'
+            WHERE id ='$id'";
+        echo "<h1>" . $query . "</h1>";
+        $result = DataProvider::getInstance()->Execute($query);
         return $result;
     }
 }

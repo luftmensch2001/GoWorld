@@ -96,10 +96,20 @@ else {
                 <td class="text-center"><?php echo $dateIn ?></td>
                 <td class="text-center"><?php echo $dateOut ?></td>
                 <td class="text-center"><?php echo $totalPrice ?></td>
+                <?php
+                if ($dateIn >= date('Y-m-d')) {
+                ?>
+                  <td class="text-center" style="width:10px">
+                    <form action="./DeleteTourOrder.php" method="post">
+                      <input type="hidden" name="idTourOrder" value="<?php echo $listTourOrder[$i]->GetId() ?>">
+                      <input type="submit" value="Xóa">
+                    </form>
+                  </td>
               </tr>
-            <?php
-            }
-            ?>
+          <?php
+                }
+              }
+          ?>
           </tbody>
         </table>
       </div>

@@ -18,10 +18,16 @@ for ($i = 0; $i < count($listBlog); $i++) {
         <td class="text-center"><?php echo $nameBlog ?></td>
         <td class="text-center"><?php echo $date ?></td>
         <td class="text-center"><?php echo $countAccess ?></td>
-        <td class="text-center">
+        <td class="text-center" style="width:10px">
             <form action="./DeleteBlog.php" method="post">
                 <input type="hidden" name="idBlog" value="<?php echo $listBlog[$i]->GetId() ?>">
                 <input type="submit" value="Xóa">
+            </form>
+        </td>
+        <td class="text-center" style="width:10px">
+            <form action="./FixBlog.php" method="post">
+                <input type="hidden" name="idBlog" value="<?php echo $listBlog[$i]->GetId() ?>">
+                <input type="submit" value="Sửa">
             </form>
         </td>
     </tr>

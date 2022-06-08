@@ -63,28 +63,6 @@ if ($idAccount != null && $idAccount != -1) {
         <div class="container__box-search">
             <div class="box-search__option">
                 <div>
-                    <img src="../assets/img/location.png" alt="" width="20px" height="20px">
-                    <label for="">Địa điểm</label>
-                </div>
-                <select name="" id="">
-                    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
-                    <option value="Đà Nẵng">Đà Nẵng</option>
-                    <option value="Hà Nội">Hà Nội</option>
-                </select>
-            </div>
-            <div class="box-search__option">
-                <div>
-                    <img src="../assets/img/people.png" alt="" width="20px" height="20px">
-                    <label for="">Số người</label>
-                </div>
-                <select name="" id="">
-                    <option value="1">1 Người</option>
-                    <option value="2">2 Người</option>
-                    <option value="3">3 Người</option>
-                </select>
-            </div>
-            <div class="box-search__option">
-                <div>
                     <img src="../assets/img/date.png" alt="" width="20px" height="20px">
                     <label for="">Ngày checkin</label>
                 </div>

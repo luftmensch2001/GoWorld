@@ -61,6 +61,29 @@ class TourDTO
         }
         return $listTour;
     }
+    public function GetListTourByIdAccount($idAccount)
+    {
+        $listTour = array();
+        $query = "SELECT * FROM Tour where idAccount = '$idAccount'";
+        $result = DataProvider::getInstance()->Execute($query);
+
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tour = new Tour();
+            $tour->SetId($row["id"])
+                ->SetImageUrl($row["imageURL"])
+                ->SetCode($row["code"])
+                ->SetNameTour($row["nameTour"])
+                ->SetDateIn($row["dateIn"])
+                ->SetDateOut($row["dateOut"])
+                ->SetPriceAdult($row["priceAdult"])
+                ->SetPriceChild($row["priceChild"])
+                ->SetDetail($row["detail"])
+                ->SetIdAccount($row["idAccount"]);
+            array_push($listTour,$tour);
+        }
+        return $listTour;
+    }
     
     public function ExistCode($code)
     {
@@ -112,6 +135,13 @@ class TourDTO
             detail='$detail',
             idAccount='$idAccount' WHERE id ='$id'";
         $result = DataProvider::getInstance()->Execute($query);
+        return $result;
+    }
+    public function DeleteTour($idTour)
+    {
+        $query = "DELETE FROM `tour` WHERE id = '$idTour'";
+        $result = DataProvider::getInstance()->Execute($query);
+        echo $query;
         return $result;
     }
 }

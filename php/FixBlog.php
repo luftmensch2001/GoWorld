@@ -19,29 +19,39 @@ else {
         header("Location:Logout.php");
     } else
         $fullName = $account->GetFullName();
-    if (isset($_FILES['imageUrl'])) {
+    if (isset($_POST['idBlog'])) {
+        $id = $_POST['idBlog'];
+        $blog = BlogDTO::getInstance()->GetBlog($id);
+        $nameBlog = $blog->GetNameBlog();
+        $imageUrl = $blog->GetImageUrl();
+        $detail = $blog->GetDetail();
+    }
+
+    if (isset($_POST['submit'])) {
         $nameBlog = $_POST['nameBlog'];
         $detail = $_POST['detail'];
         $uploaddir = '../assets/img/blogs/';
-        $summary = $_POST['summary'];
         $rand1 = rand('1111111111', '9999999999');
         $rand2 = rand('1111111111', '9999999999');
         $value = $_FILES['imageUrl']['name'];
-        $uploadfile = $uploaddir . $rand1 . $rand2 . $value;
-        move_uploaded_file($_FILES['imageUrl']['tmp_name'], $uploadfile);
-
+        if ($value != '') {
+            $uploadfile = $uploaddir . $rand1 . $rand2 . $value;
+            move_uploaded_file($_FILES['imageUrl']['tmp_name'], $uploadfile);
+        } else {
+            $uploadfile = $_POST['oldImage'];
+        }
         $currentDateTime = date('Y-m-d');
+        $idBlog = $_POST['idBlog'];
+        $imageUrl = $uploadfile;
         $blog = new Blog();
         $blog->SetNameBlog($nameBlog)
-        ->SetDetail($detail)
-        ->SetImageUrl($uploadfile)
-        ->SetDate($currentDateTime)
-        ->SetSummary($summary)
-        ->SetIdAccount($idAccount);
-
-        if (BlogDTO::getInstance()->CreateBlog($blog))
-        {
-            header("Location:blogAdmin.php");
+            ->SetDetail($detail)
+            ->SetImageUrl($uploadfile)
+            ->SetDate($currentDateTime)
+            ->SetIdAccount($idAccount)
+            ->SetId($idBlog);
+        if (BlogDTO::getInstance()->UpdateBlog($blog)) {
+           header("Location:blogAdmin.php");
         }
     }
 }
@@ -53,7 +63,7 @@ else {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Blog</title>
+    <title>Sửa Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/base.css">
@@ -70,11 +80,12 @@ else {
         <?php include './View/HeaderA.php' ?>
         <?php include './View/HeaderAccount.php' ?>
     </header>
-    
+
     <form enctype="multipart/form-data" class="container" action="#" method="post" onsubmit="return Check()">
-        <h1 class="post__title">THÊM BÀI VIẾT MỚI</h1>
-        <img src="../assets/img/img-tour.png" id="image" alt="" class="post__img">
-        <input type="hidden" id="hidden" value="">
+        <h1 class="post__title">SỬA BÀI VIẾT</h1>
+        <img src="<?php echo $imageUrl ?>" id="image" alt="" class="post__img">
+        <input type="hidden" id="hidden" name="oldImage" value="<?php echo $imageUrl ?>">
+        <input type="hidden" id="hiddenId" name="idBlog" value="<?php echo $id ?>">
         <label>
             <input style="display: none;" id="image-input" type="file" name="imageUrl" accept="image/jpeg, image/png, image/jpg"></input>
             <span class="post__button-upload">Chọn hình ảnh</span>
@@ -83,14 +94,10 @@ else {
             <p class="post__info-title">Tên bài viết</p>
             <input type="text" name="nameBlog" id="nameTour" class="post__info-input" value="<?php echo $nameBlog ?>" required="required">
         </div>
-        <div class="post__info-field">
-            <p class="post__info-title" >Tóm tắt nội dung</p>
-            <input style="height: 100px" type="text" name="summary" id="nameTour" class="post__info-input" value="<?php echo $summary ?>" required="required">
-        </div>
         <h2 class="post__info-title" style="font-size: 2.5em; margin-top: 40px">Nội dung chính</h2>
         <textarea name="detail" id="editor" cols="30" rows="30" style="width:100%"><?php echo $detail ?></textarea>
         <div class="post__button-zone">
-            <input type="submit" class="post__button" value="Thêm blog"></input>
+            <input type="submit" name="submit" class="post__button" value="Sửa blog"></input>
             <!-- <button class="post__button-2" type="reset" id="deleteButton">Xoá thông tin</button>-->
         </div>
     </form>

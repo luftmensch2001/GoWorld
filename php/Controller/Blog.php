@@ -7,6 +7,7 @@ Class Blog{
     private $detail;
     private $idAccount;
     private $countAccess;
+    private $summary;
 
     function SetId($id){
         $this->id = $id;
@@ -57,5 +58,12 @@ Class Blog{
     }
     function GetDate() {
         return $this->date;
+    }
+    function SetSummary($summary){
+        $this->summary = $summary;
+        return $this;
+    }
+    function GetSummary() {
+        return $this->summary;
     }
 }

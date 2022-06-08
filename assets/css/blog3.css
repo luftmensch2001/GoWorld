@@ -96,7 +96,7 @@
     color: var(--underline-color);
 }
 
-a:hover {
+.link:hover {
     cursor: pointer;
     text-decoration: underline;
 }
@@ -217,4 +217,10 @@ a:hover {
     position: absolute;
     bottom: 0;
     width: 100%;
+}
+
+input {
+    background-color: white;
+    border: none;
+    text-align: left;
 }

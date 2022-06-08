@@ -4,7 +4,7 @@ require_once('./Model/AccountDTO.php');
 require_once('./Controller/Tour.php');
 require_once('./Model/TourDTO.php');
 
-$listTour = TourDTO::getInstance()->GetListTour();
+$listTour = TourDTO::getInstance()->GetListTourByIdAccount($idAccount);
 for ($i = 0; $i < count($listTour); $i++) {
     $imageUrl = $listTour[$i]->GetImageUrl();
     $code = $listTour[$i]->GetCode();
@@ -27,7 +27,7 @@ for ($i = 0; $i < count($listTour); $i++) {
         <td class="text-center">
             <form action="./tourOrder.php" method="post">
                 <input type="hidden" name="idTour" value="<?php echo $listTour[$i]->GetId() ?>">
-                <input type="submit" value="Xem danh sách">
+                <input type="submit" value="Chi tiết">
             </form>
         </td>
     </tr>

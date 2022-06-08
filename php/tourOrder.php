@@ -25,6 +25,20 @@ else {
     $idTour = $_POST['idTour'];
     $tour = TourDTO::getInstance()->GetTour($idTour);
     $nameTour = $tour->GetNameTour();
+    $code = $tour->GetCode();
+    $dateIn = $tour->GetDateIn();
+    $dateOut = $tour->GetDateOut();
+    $priceAdult = $tour->GetPriceAdult();
+    $priceChild = $tour->GetPriceChild();
+    require_once('./Controller/TourOrder.php');
+    require_once('./Model/TourOrderDTO.php');
+    $listTourOrder = TourOrderDTO::getInstance()->GetListTourOrderByIdTour($idTour);
+    if (count($listTourOrder) > 0) {
+      $display = "none";
+    }
+    else {
+      $display = "inline-block";
+    }
   }
 }
 ?>
@@ -63,7 +77,24 @@ else {
     <div class="row">
       <div class="col-md-auto">
         <div id="sidenav" class="sidenav">
-          <a id="sidenav-tour" class="sidenav-link active" href="#">Danh Sách Người đặt Tour: <?php echo $nameTour; ?></a>
+          <a id="sidenav-tour" class="sidenav-link active" href="#">Danh Sách Người đặt Tour: <?php echo $nameTour; ?></a><br>
+          <a id="sidenav-tour" class="sidenav-link active">Mã tour: <?php echo $code ?> </a> <br>
+          <a id="sidenav-tour" class="sidenav-link active">Ngày bắt đầu: <?php echo $dateIn ?> </a> <br>
+          <a id="sidenav-tour" class="sidenav-link active">Ngày kết thúc: <?php echo $dateOut ?> </a> <br>
+          <a id="sidenav-tour" class="sidenav-link active">Giá người lớn: <?php echo $priceAdult ?> VNĐ </a> <br>
+          <a id="sidenav-tour" class="sidenav-link active">Giá trẻ em: <?php echo $priceChild ?> VNĐ </a> <br>
+          <form action="./DeleteTour.php" method="post" style="display:<?php echo $display ?>">
+            <input type="hidden" name="idTour" value="<?php echo $idTour ?>">
+            <button type="submit" style="background-color:red;width:50px;margin-left:100px;">
+              <p style="color:White">Xóa</p>
+            </button>
+          </form>
+          <form action="./FixTour.php" method="post" style="display:<?php echo $display ?>">
+            <input type="hidden" name="idTour" value="<?php echo $idTour ?>">
+            <button type="submit" style="background-color:yellow;width:50px;margin-left:100px;">
+              <p style="color:White">Sửa</p>
+            </button>
+          </form>
         </div>
       </div>
       <div class="col" style="position:relative">
@@ -71,6 +102,7 @@ else {
           <table id="tableTours" class="table table-hover">
             <thead>
               <tr>
+                <th class="text-center">Tên tài khoản</th>
                 <th class="text-center">Tên người đặt</th>
                 <th class="text-center">Số vé người lớn</th>
                 <th class="text-center">Số vé trẻ em</th>
@@ -86,11 +118,11 @@ else {
           </table>
         </div>
       </div>
-      <a href="./postTour.php">
+      <!-- <a href="./postTour.php">
         <button style="position:fixed" id="btn-add" class="btn btn-outline-primary btn-circle btn-l position-absolute bottom-0 end-0 mb-2 me-2" type="button" aria-expanded="false">
           <i class="fa-solid fa-plus"></i>
         </button>
-      </a>
+      </a> -->
     </div>
   </div>
   <table>

@@ -1,6 +1,6 @@
-<div id="account" class="header__account" ><a href="./login.php">
+<div id="account" class="header__account" ><a href="./login.php" style="text-decoration: none">
             <button  id="btLogin" class="header__account-btn primary-btn" style="display: <?php echo $type;?>"> Đăng nhập</button></a>
-            <a href="./login.php">
+            <a href="./login.php" style="text-decoration: none">
             <button id ="btSignup" class="header__account-btn secondary-btn" style="display: <?php echo $type;?>">Đăng ký</button></a>
             <div id="accountForm" class="header__account-user" style="display: <?php echo $type2;?>">
                 <a href="">

@@ -27,7 +27,7 @@ for ($i = 0; $i < count($listTour); $i++) {
         <td class="text-center">
             <form action="./tourOrder.php" method="post">
                 <input type="hidden" name="idTour" value="<?php echo $listTour[$i]->GetId() ?>">
-                <input type="submit" value="Chi tiết">
+                <input type="submit" value="Chi tiết" class="blog-button">
             </form>
         </td>
     </tr>

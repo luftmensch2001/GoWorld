@@ -1,0 +1,46 @@
+#tableTours {
+    font-size: 1.4em;
+    position: relative;
+}
+
+#tableTours th {
+    position: sticky;
+    background-color: #FFF;
+    top: 0;
+}
+
+#tableTours tr {
+    height: 65px !important;
+    text-align: center;
+    vertical-align: middle
+}
+
+.blog-button {
+    background-color: var(--primary-color);
+    color: #FFF;
+    border: none;
+    border-radius: 6px;
+    padding: 2px 10px;
+}
+
+.blog-button:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+.tourOrder-text {
+    font-size: 1.8em;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.setting-container input {
+    height: 40px;
+    font-size: 1.5em;
+}
+
+.setting-container textarea{
+    height: 80px;
+    font-size: 1.6em;
+    resize: none;
+}

@@ -25,6 +25,7 @@ else {
         $nameBlog = $blog->GetNameBlog();
         $imageUrl = $blog->GetImageUrl();
         $detail = $blog->GetDetail();
+        $summary = $blog->GetSummary();
     }
 
     if (isset($_POST['submit'])) {
@@ -43,11 +44,13 @@ else {
         $currentDateTime = date('Y-m-d');
         $idBlog = $_POST['idBlog'];
         $imageUrl = $uploadfile;
+        $summary = $_POST['summary'];
         $blog = new Blog();
         $blog->SetNameBlog($nameBlog)
             ->SetDetail($detail)
             ->SetImageUrl($uploadfile)
             ->SetDate($currentDateTime)
+            ->SetSummary($summary)
             ->SetIdAccount($idAccount)
             ->SetId($idBlog);
         if (BlogDTO::getInstance()->UpdateBlog($blog)) {
@@ -93,6 +96,10 @@ else {
         <div class="post__info-field">
             <p class="post__info-title">Tên bài viết</p>
             <input type="text" name="nameBlog" id="nameTour" class="post__info-input" value="<?php echo $nameBlog ?>" required="required">
+        </div>
+        <div class="post__info-field">
+            <p class="post__info-title" >Tóm tắt nội dung</p>
+            <input style="height: 100px" type="text" name="summary" id="nameTour" class="post__info-input" value="<?php echo $summary ?>" required="required">
         </div>
         <h2 class="post__info-title" style="font-size: 2.5em; margin-top: 40px">Nội dung chính</h2>
         <textarea name="detail" id="editor" cols="30" rows="30" style="width:100%"><?php echo $detail ?></textarea>

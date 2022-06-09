@@ -21,13 +21,13 @@ for ($i = 0; $i < count($listBlog); $i++) {
         <td class="text-center" style="width:10px">
             <form action="./DeleteBlog.php" method="post">
                 <input type="hidden" name="idBlog" value="<?php echo $listBlog[$i]->GetId() ?>">
-                <input type="submit" value="Xóa">
+                <input type="submit" value="Xóa" class="blog-button" style="background-color: red">
             </form>
         </td>
         <td class="text-center" style="width:10px">
             <form action="./FixBlog.php" method="post">
-                <input type="hidden" name="idBlog" value="<?php echo $listBlog[$i]->GetId() ?>">
-                <input type="submit" value="Sửa">
+                <input type="hidden" name="idBlog" value="<?php echo $listBlog[$i]->GetId() ?>" >
+                <input type="submit" value="Sửa" class="blog-button">
             </form>
         </td>
     </tr>

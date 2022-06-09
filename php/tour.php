@@ -28,6 +28,7 @@ else {
 <head>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/tour.css" />
+  <link rel="stylesheet" href="../assets/css/phuong.css" />
   <link rel="stylesheet" href="../assets/css/base.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="../assets/js/tour.js" defer></script>
@@ -71,6 +72,7 @@ else {
                 <th class="text-center">Giá vé trẻ em</th>
                 <th class="text-center">Thời gian đi</th>
                 <th class="text-center">Thời gian về</th>
+                <th class="text-center"></th>
               </tr>
             </thead>
             <tbody>

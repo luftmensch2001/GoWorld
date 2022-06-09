@@ -53,7 +53,7 @@ if ($idAccount != null && $idAccount != -1) {
         <?php include './View/HeaderA.php'; ?>
         <?php include './View/HeaderAccount.php'; ?>
     </header>
-    <div class="container">
+    <div class="container" style="overflow: hidden">
         <?php
         if (isset($_POST['idBlog'])) {
             $idBlog = $_POST['idBlog'];

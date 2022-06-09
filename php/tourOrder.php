@@ -49,6 +49,7 @@ else {
 <head>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/tour.css" />
+  <link rel="stylesheet" href="../assets/css/phuong.css" />
   <link rel="stylesheet" href="../assets/css/base.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="../assets/js/tour.js" defer></script>
@@ -75,24 +76,24 @@ else {
   </div>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-auto">
+      <div class="col-md-4">
         <div id="sidenav" class="sidenav">
-          <a id="sidenav-tour" class="sidenav-link active" href="#">Danh Sách Người đặt Tour: <?php echo $nameTour; ?></a><br>
-          <a id="sidenav-tour" class="sidenav-link active">Mã tour: <?php echo $code ?> </a> <br>
-          <a id="sidenav-tour" class="sidenav-link active">Ngày bắt đầu: <?php echo $dateIn ?> </a> <br>
-          <a id="sidenav-tour" class="sidenav-link active">Ngày kết thúc: <?php echo $dateOut ?> </a> <br>
-          <a id="sidenav-tour" class="sidenav-link active">Giá người lớn: <?php echo $priceAdult ?> VNĐ </a> <br>
-          <a id="sidenav-tour" class="sidenav-link active">Giá trẻ em: <?php echo $priceChild ?> VNĐ </a> <br>
+          <p id="sidenav-tour" class="tourOrder-text sidenav-link active" href="#">Tên Tour: <?php echo $nameTour; ?></p><br>
+          <p id="sidenav-tour" class="tourOrder-text sidenav-link active">Mã tour: <?php echo $code ?> </p> <br>
+          <p id="sidenav-tour" class="tourOrder-text sidenav-link active">Ngày bắt đầu: <?php echo $dateIn ?> </p> <br>
+          <p id="sidenav-tour" class="tourOrder-text sidenav-link active">Ngày kết thúc: <?php echo $dateOut ?> </p> <br>
+          <p id="sidenav-tour" class="tourOrder-text sidenav-link active">Giá người lớn: <?php echo $priceAdult ?> VNĐ </p> <br>
+          <p id="sidenav-tour" class="tourOrder-text sidenav-link active">Giá trẻ em: <?php echo $priceChild ?> VNĐ </p> <br>
           <form action="./DeleteTour.php" method="post" style="display:<?php echo $display ?>">
             <input type="hidden" name="idTour" value="<?php echo $idTour ?>">
-            <button type="submit" style="background-color:red;width:50px;margin-left:100px;">
-              <p style="color:White">Xóa</p>
+            <button type="submit" style="font-size: 1.7em; padding: 5px 15px; background-color: red" class="blog-button">
+              Xóa
             </button>
           </form>
           <form action="./FixTour.php" method="post" style="display:<?php echo $display ?>">
             <input type="hidden" name="idTour" value="<?php echo $idTour ?>">
-            <button type="submit" style="background-color:yellow;width:50px;margin-left:100px;">
-              <p style="color:White">Sửa</p>
+            <button type="submit" style="font-size: 1.7em; padding: 5px 15px; margin-left: 20px" class="blog-button">
+                Sửa
             </button>
           </form>
         </div>
@@ -107,9 +108,9 @@ else {
                 <th class="text-center">Số vé người lớn</th>
                 <th class="text-center">Số vé trẻ em</th>
                 <th class="text-center">CMND/CCCD</th>
-                <th class="text-center">email</th>
-                <th class="text-center">số điện thoại</th>
-                <th class="text-center">địa chỉ đón</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Số điện thoại</th>
+                <th class="text-center">Địa chỉ đón</th>
               </tr>
             </thead>
             <tbody>

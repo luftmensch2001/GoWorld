@@ -55,6 +55,7 @@ if ($idAccount != null && $idAccount != -1) {
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/phuong.css">
     <link rel="stylesheet" href="../assets/css/info-tour.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,13 +159,13 @@ if ($idAccount != null && $idAccount != -1) {
                         <span class="book-confirm__row-header">
                             Ngày đến
                         </span>
-                        <span class="book-confirm__row-content background-div" name="" id="dateCome-confirm"><?php echo $dateIn?></span>
+                        <span class="book-confirm__row-content background-div" style="padding: 4px" name="" id="dateCome-confirm"><?php echo $dateIn?></span>
                     </div>
                     <div class="book-confirm__row">
                         <span class="book-confirm__row-header">
                             Ngày đi
                         </span>
-                        <span class="book-confirm__row-content background-div" name="" id="dateLeave-confirm"><?php echo $dateOut?></span>
+                        <span class="book-confirm__row-content background-div" style="padding: 4px" name="" id="dateLeave-confirm"><?php echo $dateOut?></span>
                     </div>
                     <div class="book-confirm__row">
                         <span class="book-confirm__row-header">
@@ -172,7 +173,7 @@ if ($idAccount != null && $idAccount != -1) {
                         </span>
                         <div class="book-confirm__row-content background-div adult-ticket-confirm">
                             <input type="hidden" name="hiddenCountAdult" id="hiddenCountAdult" value="1">
-                            <span id="cntAdultTicket-confirm">1</span>
+                            <span id="cntAdultTicket-confirm" style="padding: 4px">1</span>
                         </div>
                     </div>
                     <div class="book-confirm__row">
@@ -181,7 +182,7 @@ if ($idAccount != null && $idAccount != -1) {
                         </span>
                         <div class="book-confirm__row-content background-div child-ticket-confirm">
                             <input type="hidden" name="hiddenCountChild" id="hiddenCountChild" value="0">
-                            <span id="cntChildTicket-confirm">0</span>
+                            <span id="cntChildTicket-confirm" style="padding: 4px">0</span>
                         </div>
                     </div>
                     <div class="book-confirm__row">
@@ -248,7 +249,7 @@ if ($idAccount != null && $idAccount != -1) {
                     </div>
                 </div>
                 <div class="book-confirm__btn">
-                    <input class="book-confirm__btn" style="background-color:var(--primary-color);color:white" type="submit" name="submit" value="Xác nhận"class="btn-confirm">
+                    <input class="book-confirm__btn blog-button" style="padding-bottom: 10px; font-size: 1.4em" type="submit" name="submit" value="Xác nhận"class="btn-confirm">
                     </input>
                 </div>
             </div>

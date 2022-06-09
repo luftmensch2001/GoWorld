@@ -71,7 +71,7 @@ if (isset($_POST['usernameSignup'])) {
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/login2.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
@@ -118,7 +118,7 @@ if (isset($_POST['usernameSignup'])) {
             </div> -->
         </div>
     </header>
-    <div class="container">
+    <div class="container" style="background-image: url('../assets/img/BackImgLogin.png')">
         <input id="type" type="hidden" value="<?php echo $type; ?>">
         <div class="container__form">
             <div class="container__form-header">

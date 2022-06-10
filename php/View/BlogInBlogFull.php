@@ -6,10 +6,21 @@ require_once('./Model/BlogDTO.php');
 ?>
         <?php
         $listBlog = BlogDTO::getInstance()->GetListBlogNew();
-        $min = min(count($listBlog), 12);
+        if (!isset($_POST['pageNumber']))
+        {
+            $pageNumber = 0;
+        } else
+        {
+            $pageNumber = $_POST['pageNumber']-1;
+        }
+
+        $startNumber = ($pageNumber*12);
+        $lastNumber =min($startNumber+12,count($listBlog));
+
+
         $account = AccountDTO::getInstance()->GetAccount($idAccount);
         $userName = $account->GetUserName();
-        for ($i = 0; $i < $min; $i++) {
+        for ($i = $startNumber; $i < $lastNumber; $i++) {
             $imageUrl = $listBlog[$i]->GetImageUrl();
             $nameBlog = $listBlog[$i]->GetNameBlog();
             $date = $listBlog[$i]->GetDate();
@@ -20,7 +31,7 @@ require_once('./Model/BlogDTO.php');
             <form action="./info-blog.php" method="post" class="container__list-blog-item">
                 <input type="hidden" name="idBlog" value="<?php echo $idBlog ?>">
                 <div href="" class="container__list-blog-item-img link">
-                    <img src="../assets/img/BackImgLogin.png" alt="">
+                    <img src="<?php echo $imageUrl?>" alt="">
                 </div>
 
                 <div class="container__list-blog-item-text">

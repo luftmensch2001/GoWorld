@@ -4,8 +4,19 @@ require_once('./Model/AccountDTO.php');
 require_once('./Controller/Tour.php');
 require_once('./Model/TourDTO.php');
 
+
 $listTour = TourDTO::getInstance()->GetListTour();
-for ($i = 0; $i < count($listTour); $i++) {
+if (!isset($_POST['pageNumber']))
+{
+    $pageNumber = 0;
+} else
+{
+    $pageNumber = $_POST['pageNumber']-1;
+}
+
+$startNumber = ($pageNumber*12);
+$lastNumber =min($startNumber+12,count($listTour));
+for ($i = $startNumber; $i < $lastNumber; $i++) {
     $id = $listTour[$i]->GetId();
     $imageUrl = $listTour[$i]->GetImageUrl();
     $code = $listTour[$i]->GetCode();

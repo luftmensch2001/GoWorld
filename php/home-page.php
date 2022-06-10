@@ -80,12 +80,36 @@ if ($idAccount != null && $idAccount != -1) {
         <div class="container__box-tour">
             <?php include './View/TourInHomePage.php'?>
         </div>
-        <div class="container__page">
-            <button> Đầu </button>
-            <button class="current-page">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button> Cuối </button>
+        <?php if (count($listTour) <= 12)
+            $displayNumber = "none";
+        else $displayNumber = "flex";
+        $count = count($listTour) / 12;
+        $count = (int)$count;
+        ?>
+        <div class="container__page" style="display:<?php echo $displayNumber; ?>">
+            <form action="#" method="post">
+                <input type="hidden" name="pageNumber" value="<?php echo 1; ?>">
+                <button> Đầu </button>
+            </form>
+            <?php
+            if ($pageNumber == 0) {
+                $startNumberPage = 1;
+                $lastNumberPage = min($count + 1, $startNumberPage + 2);
+            }
+            if ($pageNumber == $count) {
+                $startNumberPage = max(1, $pageNumber - 2);
+                $lastNumberPage = $pageNumber + 1;
+            }
+            for ($i = $startNumberPage; $i <= $lastNumberPage; $i++) { ?>
+                <form action="#" method="post">
+                    <input type="hidden" name="pageNumber" value="<?php echo $i; ?>">
+                    <button><?php echo $i; ?></button>
+                </form>
+            <?php } ?>
+            <form action="#" method="post">
+                <input type="hidden" name="pageNumber" value="<?php echo $count+1; ?>">
+                <button> Cuối </button>
+            </form>
         </div>
     </div>
     <?php include './View/Footer.php' ?>

@@ -30,7 +30,7 @@ if ($idAccount != null && $idAccount != -1) {
     <title>Tour - Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/full-blog2.css">
+    <link rel="stylesheet" href="../assets/css/full-blog3.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
@@ -64,12 +64,36 @@ if ($idAccount != null && $idAccount != -1) {
         <div class="container__list-blog">
             <?php include './View/BlogInBlogFull.php' ?>
         </div>
-        <div class="container__page">
-            <button> Đầu </button>
-            <button class="current-page">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button> Cuối </button>
+        <?php if (count($listBlog) <= 12)
+            $displayNumber = "none";
+        else $displayNumber = "flex";
+        $count = count($listBlog) / 12;
+        $count = (int)$count;
+        ?>
+        <div class="container__page" style="display:<?php echo $displayNumber; ?>">
+            <form action="#" method="post">
+                <input type="hidden" name="pageNumber" value="<?php echo 1; ?>">
+                <button> Đầu </button>
+            </form>
+            <?php
+            if ($pageNumber == 0) {
+                $startNumberPage = 1;
+                $lastNumberPage = min($count + 1, $startNumberPage + 2);
+            }
+            if ($pageNumber == $count) {
+                $startNumberPage = max(1, $pageNumber - 2);
+                $lastNumberPage = $pageNumber + 1;
+            }
+            for ($i = $startNumberPage; $i <= $lastNumberPage; $i++) { ?>
+                <form action="#" method="post">
+                    <input type="hidden" name="pageNumber" value="<?php echo $i; ?>">
+                    <button><?php echo $i; ?></button>
+                </form>
+            <?php } ?>
+            <form action="#" method="post">
+                <input type="hidden" name="pageNumber" value="<?php echo $count+1; ?>">
+                <button> Cuối </button>
+            </form>
         </div>
     </div>
     <?php include './View/Footer.php' ?>

@@ -1,0 +1,214 @@
+:root {
+    --white-color: #ffffff;
+    --black-color: #000;
+    --text-color: #305774;
+    --primary-color: #229CF4;
+    --underline-color: #012138;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.4;
+    font-family: 'Risque', cursive;
+    box-sizing: border-box;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 20px;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    outline: none;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    outline: none;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* Header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    position: fixed;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background-color: #ffffff;
+    border-bottom: solid 2px #dbdbdb;
+    color: var(--text-color);
+    transition: all 0.2s ease-in;
+}
+
+.header__logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    padding-left: 20px;
+    width: 33.33%;
+}
+
+.header__logo h2 {
+    margin-left: -12px;
+    font-size: 3.6rem;
+    font-weight: 500;
+}
+
+.header__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 33.33%;
+}
+
+.header__navbar a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 2.6rem;
+}
+
+.header__account {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 33.33%;
+}
+
+.header__account-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header__account-user:hover .header__account-user-menu {
+    display: block;
+}
+
+.header__account-user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 40px;
+}
+
+.header__account-user-menu {
+    position: absolute;
+    background-color: #ffffff;
+    width: 170px;
+    top: 100%;
+    right: 40px;
+    border: 2px solid #D1D1D1;
+    display: none;
+}
+
+.header__account-user-menu img {
+    margin-right: 16px;
+}
+
+.header__account-user-menu a {
+    text-decoration: none;
+    display: flex;
+    font-size: 1.4rem;
+    color: #012138;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 16px;
+    align-items: center;
+}
+
+.header__account-user-menu a:hover {
+    background-color: #eaeaea;
+}
+
+.account-user__info {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.account-user__info-sub {
+    font-size: 1rem;
+}
+
+.account-user__info div {
+    margin-left: -8px;
+}
+
+
+.header__account button {
+    font-size: 2.2rem;
+    padding: 8px 20px;
+    margin-right: 8px;
+}
+
+.header__underline {
+    width: 50px;
+    height: 3px;
+    margin: 4px auto;
+}
+
+.header__underline::before {
+    height: 60px;
+    width: inherit;
+    top: -60px;
+}
+
+.header__navbar div:hover {
+    opacity: 0.7;
+}
+
+.underline-show {
+    display: block;
+    border-bottom: solid 3px var(--text-color);
+}
+
+
+/* Footer */
+
+.footer {
+    background-color: var(--text-color);
+    font-weight: 200;
+    font-size: 2.2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    z-index: 2;
+}
+
+.footer div div,
+.footer div a {
+    padding-bottom: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+.footer__header {
+    font-size: 2.8rem;
+}
+
+.footer__about {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer div a:hover {
+    text-decoration: underline;
+}

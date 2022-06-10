@@ -1,0 +1,112 @@
+body {
+    background-color: #EFEFEF;
+}
+
+.container {
+    width: 1200px;
+    background-color: #FFF;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.post__title {
+    margin-top: 30px;
+    font-size: 3.5em;
+    text-align: center;
+}
+
+.post__img {
+    margin: 0 auto;
+    max-height: 400px;
+}
+
+.post__button-upload {
+    font-size: 1.4em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin: 10px;
+    background-color: var(--primary-color);
+    color: #FFF;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.post__button-upload:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+.post__info-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 600px;
+    margin: 15px 0;
+}
+
+.post__info-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.post__info-input {
+    width: 460px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    height: 45px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+#editor {
+ 
+}
+
+.ck-editor__editable {
+    min-height: 400px;
+    width: 700px;
+    font-size: 1.6em;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.post__button, 
+.post__button-2 {
+    font-size: 1.9em;
+    font-weight: 500;
+    margin: 40px 20px;
+    padding: 10px 0;
+    width: 130px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    
+}
+
+.post__button {
+    background-color: var(--primary-color);
+    color: #FFF; 
+    box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.post__button-2 {
+    background-color: #FFF;
+    color: #FC3F3F; 
+    box-shadow: 1px 2px 2px 3px rgba(255, 0, 0, 0.2);
+}
+
+.post__button:hover {
+    opacity: .9;
+}
+
+.post__button-2:hover {
+    background-color: rgb(243, 242, 242);
+}

@@ -1,0 +1,120 @@
+
+/* Container */
+
+.container {
+    position: relative;
+    top: 100px;
+    width: 1200px;
+    height: 1124px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.upload-info {
+    color: #5F5963;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--underline-color);
+}
+
+.link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transform: translateY(-1px);
+}
+
+.container__list-blog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px;
+    grid-column-gap: 20px;
+    grid-row-gap: 24px;
+    padding: 32px;
+}
+
+.container__list-blog-item {
+    height: 260px;
+    box-shadow: 2px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 0;
+    position: relative;
+}
+
+.container__list-blog-item-img img {
+    width: 100%;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.container__list-blog-item-text {
+    padding: 4px 12px;
+}
+
+.container__list-blog-item-header {
+    font-size: 1.6rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.container__list-blog-item-content {
+    font-size: 1.4rem;
+    text-align: justify;
+    margin: 8px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.container__list-blog-item-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 12px;
+}
+
+.container__page {
+    display: flex;
+    padding: 43px 0;
+    justify-content: center;
+}
+
+.container__page button {
+    background-color: #E8E1E1;
+    border-radius: 5px;
+    padding: 12px 20px;
+    margin: 0 20px;
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    border: none;
+    outline: none;
+}
+
+.container__page button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.container__page .current-page {
+    background-color: var(--text-color);
+    color: var(--white-color);
+}
+input {
+    background-color: white;
+    border: none;
+    text-align: left;
+}

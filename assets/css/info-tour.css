@@ -1,0 +1,287 @@
+.container {
+    position: relative;
+    top: 100px;
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 64px;
+}
+
+.container__info {
+    width: 60%;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 100px;
+    color: var(--underline-color);
+}
+
+.container__info-header {
+    font-size: 3.2rem;
+}
+
+.tour-item__rate img {
+    width: 40px;
+    height: auto;
+}
+
+.container__info-intro {
+    font-size: 2.4rem;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.container__info-content {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.container__info-content-header {
+    font-weight: 600;
+    font-size: 2.8rem;
+    padding: 20px 0;
+}
+
+.container__info-content-sub-header {
+    font-size: 2.4rem;
+}
+
+.container__book-form {
+    width: 35%;
+    border: 1px solid #BAB4BD;
+    height: 450px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    transition: all 0.1s ease-out;
+}
+
+.container__book-form-price {
+    width: 100%;
+    color: #FC3F3F;
+    font-size: 3.6rem;
+    border-bottom: 1px solid #BAB4BD;
+    text-align: center;
+    padding: 12px 0;
+    margin: 0;
+}
+
+.container__book-form-option {
+    color: var(--text-color);
+    padding: 0 20px;
+}
+
+.container__book-form-option > div > div > span {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.date-pick {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    padding: 16px 0;
+}
+
+.date-pick input {
+    background-color: #E8E1E1;
+    outline: none;
+    border: none;
+    font-weight: 800;
+}
+
+.container__book-form-ticket {
+    display: flex;
+    font-size: 1.6rem;
+}
+
+.ticket-type {
+    width: 50%;
+    padding: 16px 0;
+}
+
+.ticket-price {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C4C4C4;
+    width: 150px;
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+.ticket-price span {
+    font-weight: 800;
+}
+
+button.updown-btn {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    background-color: #ffffff;
+    color: var(--text-color);
+    margin: 0 4px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+
+#btn-booktour {
+    width: 100%;
+    font-size: 2.4rem;
+    margin: 20px 0;
+    padding: 12px;
+    font-family: 'Risque', cursive;
+}
+
+.container__book-form-option button:hover,
+.book-confirm__row-content button:hover {
+    cursor: pointer;
+    border: 1px solid #BAB4BD;
+}
+
+/* Modal */
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    animation: fadeIn linear 0.1s;
+    visibility: hidden;
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__body {
+    --growth-from: 0.7;
+    --growth-to: 1;
+    display: flex;
+    position: relative;
+    background-color: var(--white-color);
+    border-radius: 5px;
+    margin: auto;
+    z-index: 3;
+    animation: growth linear 0.1s;
+}
+
+.book-confirm {
+    width: 450px;
+    height: 685px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    padding: 12px 40px;
+}
+
+.book-confirm__header {
+    font-size: 3.2rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 12px;
+}
+
+.book-confirm__divheader {
+    font-size: 2rem;
+}
+
+.book-confirm__info-tour-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 8px 0 8px 20px;
+}
+
+.book-confirm__row {
+    display: flex;
+    align-items: flex-start;
+    padding: 4px 0px 4px 20px;
+}
+
+.book-confirm__row button {
+    border: 1px solid var(--text-color);
+    margin: 4px 16px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.book-confirm__row-header {
+    font-size: 1.6rem;
+    font-weight: 400;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+.book-confirm__row-content {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    word-wrap: break-word;
+}
+
+.book-confirm__btn {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 12px;
+}
+
+.book-confirm__btn button {
+    font-size: 1.6rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.book-confirm__btn button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.btn-confirm {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+}
+
+.btn-cancel {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.background-div {
+    background-color: #E8E1E1;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    border: none;
+    width: 150px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+input[type=date] {
+    padding: 0 4px;
+    border-radius: 4px;
+}

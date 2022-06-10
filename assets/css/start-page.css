@@ -1,0 +1,177 @@
+
+.header {
+    background-color: transparent; 
+    border: none;
+}
+
+.container {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1200px;
+    margin: 0 auto;
+    display: block;
+    min-height: 100vh;
+    
+}
+
+#background-img {
+    opacity: 0.6;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container__slider {
+    position: relative;
+    background-color: transparent;
+    top: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 45%;
+}
+
+.container__slider-img {
+    display: flex;
+    align-items: center;
+    width: 850px;
+}
+
+.container__slider-img img {
+    border-radius: 8px;
+}
+
+.container__slider-img-prepare-left,
+.container__slider-img-prepare-right {
+    display: none;
+}
+
+.container__slider-img-left {
+    position: relative;
+    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+    border-radius: 5px;
+}
+
+.container__slider-img-mid {
+    position: relative;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    width: 550px;
+    min-width: 550px;
+    max-width: 550px;
+    right: 250px;
+    z-index: 2;
+}
+
+.container__slider-img-right {
+    position: relative;
+    right: 500px;
+    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+    border-radius: 5px;
+}
+
+.container__slider button {
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 50%;
+    background-color: #B7CDDD;
+    outline: none;
+    border: none;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.container__slider button:hover,
+.container__tour-info-book-btn:hover
+ {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.container__slider-previous {
+    background-image: url('/assets/img/ArrowLeft.png');
+    background-position: 50%;
+}
+
+.container__slider-next {
+    background-image: url('/assets/img/ArrowRight.png');
+    background-position: 50%;
+}
+
+.container__tour-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0px;
+    height: 50%;
+    position: relative;
+    top: 120px;
+}
+
+.container__tour-info-book {
+    display: flex;
+    width: 45%;
+    font-size: 2.4rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    color: #012138;
+}
+
+.container__tour-info-book-rate {
+    padding: 4px 0;
+}
+
+.container__tour-info-book-rate img {
+    width: auto;
+    height: 20px;
+}
+
+.container__tour-info-book-price {
+    color: #FC3F3F;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    padding-bottom: 8px;
+}
+
+.container__tour-info-book-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 2rem;
+    padding: 14px;
+}
+
+.book-btn-icon {
+    padding-left: 4px;
+    position: relative;
+    top: 2px;
+}
+
+.container__tour-info-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    padding-right: 5%;
+    text-align: justify;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 3rem;
+}

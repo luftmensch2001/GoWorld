@@ -11,15 +11,21 @@ Trang web của chúng tôi cung cấp những tính năng như sau:
 Phía người dùng: 
 
 -Thông tin tour
+
 -Đặt tour
+
 -Xem các bài viết giới thiệu về địa điểm du lịch
+
 -Lọc, tìm kiếm
+
 -Quản lí thông tin tài khoản
 
 Phía doanh nghiệp: 
 
 -Quản lí tour
+
 -Quản lí bài viết
+
 -Quản lí kinh doanh-lịch sử đặt tour
 
 ## Phát triển

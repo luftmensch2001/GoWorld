@@ -4,18 +4,43 @@ require_once('./Model/AccountDTO.php');
 require_once('./Controller/Tour.php');
 require_once('./Model/TourDTO.php');
 
-
-$listTour = TourDTO::getInstance()->GetListTour();
-if (!isset($_POST['pageNumber']))
-{
+if (!isset($_POST['pageNumber'])) {
     $pageNumber = 0;
-} else
-{
-    $pageNumber = $_POST['pageNumber']-1;
+} else {
+    $pageNumber = $_POST['pageNumber'] - 1;
+}
+if (isset($_POST['submitSearch'])) {
+    $pageNumber = 0;
+    $hiddenDateIn = $dateIn;
+    $hiddenDateOut = $dateOut;
+} else {
+    if (isset($_POST['hiddenDateIn']))
+        $hiddenDateIn = $_POST['hiddenDateIn'];
+    if (isset($_POST['hiddenDateOut']))
+        $hiddenDateOut = $_POST['hiddenDateOut'];
 }
 
-$startNumber = ($pageNumber*12);
-$lastNumber =min($startNumber+12,count($listTour));
+if ($dateIn == null)
+    $dateIn = "";
+if ($dateOut == null)
+    $dateOut = "";
+
+if ($dateIn == "" && $dateOut == "") {
+    $listTour = TourDTO::getInstance()->GetListTourByDate();
+}
+if (!$dateIn == "" && !$dateOut == "") {
+    $listTour = TourDTO::getInstance()->GetListTourByDateInOut($_POST['dateIn'], $_POST['dateOut']);
+}
+if (!$dateIn == "" && $dateOut == "") {
+    $listTour = TourDTO::getInstance()->GetListTourByDateIn($_POST['dateIn']);
+}
+if ($dateIn == "" && !$dateOut == "") {
+    $listTour = TourDTO::getInstance()->GetListTourByDateOut($_POST['dateOut']);
+}
+
+
+$startNumber = ($pageNumber * 12);
+$lastNumber = min($startNumber + 12, count($listTour));
 for ($i = $startNumber; $i < $lastNumber; $i++) {
     $id = $listTour[$i]->GetId();
     $imageUrl = $listTour[$i]->GetImageUrl();
@@ -27,10 +52,10 @@ for ($i = $startNumber; $i < $lastNumber; $i++) {
     $dateOut = $listTour[$i]->GetDateOut();
 ?>
     <form class="tour-item" method="post" action="./info-tour.php">
-        <img src="<?php echo $imageUrl?>" alt="" width="340px" height=" 220px">
-        <input type="hidden" name="idTour" value="<?php echo $id?>">
+        <img src="<?php echo $imageUrl ?>" alt="" width="340px" height=" 220px">
+        <input type="hidden" name="idTour" value="<?php echo $id ?>">
         <div class="tour-item__header">
-            <span><?php echo $nameTour?></span> 
+            <span><?php echo $nameTour ?></span>
             <div class="tour-item__rate">
                 <img src="../assets/img/upvote.png">
                 <img src="../assets/img/upvote.png">
@@ -39,7 +64,7 @@ for ($i = $startNumber; $i < $lastNumber; $i++) {
                 <img src="../assets/img/downvote.png">
             </div>
             <div class="row-end">
-                <div class="tour-item__price"><?php echo $priceAdult?> VNĐ</div>
+                <div class="tour-item__price"><?php echo $priceAdult ?> VNĐ</div>
                 <button class="primary-btn">Xem tour</button>
             </div>
         </div>

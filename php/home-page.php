@@ -10,7 +10,7 @@ if ($idAccount != null && $idAccount != -1) {
     $type = "none";
     $type2 = "block";
     $account = AccountDTO::getInstance()->GetAccount($idAccount);
-    if ($account==null) {
+    if ($account == null) {
         header("Location:Logout.php");
     } else
         $fullName = $account->GetFullName();
@@ -30,7 +30,7 @@ if ($idAccount != null && $idAccount != -1) {
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/home-page.css">
+    <link rel="stylesheet" href="../assets/css/home-page2.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@ if ($idAccount != null && $idAccount != -1) {
             </div>
             <div class="header__navbar-blog">
                 <a href="./blog.php">Blog</a>
-                <div class="header__underline"></div>  
+                <div class="header__underline"></div>
             </div>
             <div class="header__navbar-contact">
                 <a href="./contact.php">Liên hệ</a>
@@ -60,25 +60,40 @@ if ($idAccount != null && $idAccount != -1) {
         <?php include './View/HeaderAccount.php'; ?>
     </header>
     <div class="container">
-        <div class="container__box-search">
+        <?php
+        if (isset($_POST['dateIn'])) {
+            $dateIn = $_POST['dateIn'];
+        }
+        if (isset($_POST['hiddenDateIn'])) {
+            $dateIn = $_POST['hiddenDateIn'];
+        }
+        if (isset($_POST['dateOut'])) {
+            $dateOut = $_POST['dateOut'];
+        }
+        if (isset($_POST['hiddenDateOut'])) {
+            $dateOut = $_POST['hiddenDateOut'];
+        }
+        $currentDateTime = date('Y-m-d');
+        ?>
+        <form method="post" action="#" class="container__box-search">
             <div class="box-search__option">
                 <div>
                     <img src="../assets/img/date.png" alt="" width="20px" height="20px">
                     <label for="">Ngày checkin</label>
                 </div>
-                <input type="date" name="" id="">
+                <input type="date" name="dateIn" id="" value="<?php echo $dateIn ?>">
             </div>
             <div class="box-search__option">
                 <div>
                     <img src="../assets/img/date.png" alt="" width="20px" height="20px">
                     <label for="">Ngày checkout</label>
                 </div>
-                <input type="date" name="" id="">
+                <input type="date" name="dateOut" id="" value="<?php echo $dateOut ?>">
             </div>
-            <button class="primary-btn">Tìm kiếm</button>
-        </div>
+            <input type="submit" name="submitSearch" class="primary-btn" value="Tìm kiếm"> </input>
+        </form>
         <div class="container__box-tour">
-            <?php include './View/TourInHomePage.php'?>
+            <?php include './View/TourInHomePage.php' ?>
         </div>
         <?php if (count($listTour) <= 12)
             $displayNumber = "none";
@@ -89,6 +104,8 @@ if ($idAccount != null && $idAccount != -1) {
         <div class="container__page" style="display:<?php echo $displayNumber; ?>">
             <form action="#" method="post">
                 <input type="hidden" name="pageNumber" value="<?php echo 1; ?>">
+                <input type="hidden" name="hiddenDateIn" value="<?php echo $hiddenDateIn ?>">
+                <input type="hidden" name="hiddenDateOut" value="<?php echo $hiddenDateOut ?>">
                 <button> Đầu </button>
             </form>
             <?php
@@ -103,11 +120,15 @@ if ($idAccount != null && $idAccount != -1) {
             for ($i = $startNumberPage; $i <= $lastNumberPage; $i++) { ?>
                 <form action="#" method="post">
                     <input type="hidden" name="pageNumber" value="<?php echo $i; ?>">
+                    <input type="hidden" name="hiddenDateIn" value="<?php echo $hiddenDateIn ?>">
+                    <input type="hidden" name="hiddenDateOut" value="<?php echo $hiddenDateOut ?>">
                     <button><?php echo $i; ?></button>
                 </form>
             <?php } ?>
             <form action="#" method="post">
-                <input type="hidden" name="pageNumber" value="<?php echo $count+1; ?>">
+                <input type="hidden" name="pageNumber" value="<?php echo $count + 1; ?>">
+                <input type="hidden" name="hiddenDateIn" value="<?php echo $hiddenDateIn ?>">
+                <input type="hidden" name="hiddenDateOut" value="<?php echo $hiddenDateOut ?>">
                 <button> Cuối </button>
             </form>
         </div>

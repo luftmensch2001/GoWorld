@@ -61,6 +61,95 @@ class TourDTO
         }
         return $listTour;
     }
+    public function GetListTourByDate()
+    {
+        $listTour = array();
+        $query = "SELECT * FROM Tour order by 'dateIn' DESC";
+        $result = DataProvider::getInstance()->Execute($query);
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tour = new Tour();
+            $tour->SetId($row["id"])
+                ->SetImageUrl($row["imageURL"])
+                ->SetCode($row["code"])
+                ->SetNameTour($row["nameTour"])
+                ->SetDateIn($row["dateIn"])
+                ->SetDateOut($row["dateOut"])
+                ->SetPriceAdult($row["priceAdult"])
+                ->SetPriceChild($row["priceChild"])
+                ->SetDetail($row["detail"])
+                ->SetIdAccount($row["idAccount"]);
+            array_push($listTour,$tour);
+        }
+        return $listTour;
+    }
+    public function GetListTourByDateInOut($dateIn,$dateOut)
+    {
+        $listTour = array();
+        $query = "SELECT * FROM Tour where dateIn='$dateIn' AND dateOut='$dateOut'order by 'dateIn' DESC";
+        $result = DataProvider::getInstance()->Execute($query);
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tour = new Tour();
+            $tour->SetId($row["id"])
+                ->SetImageUrl($row["imageURL"])
+                ->SetCode($row["code"])
+                ->SetNameTour($row["nameTour"])
+                ->SetDateIn($row["dateIn"])
+                ->SetDateOut($row["dateOut"])
+                ->SetPriceAdult($row["priceAdult"])
+                ->SetPriceChild($row["priceChild"])
+                ->SetDetail($row["detail"])
+                ->SetIdAccount($row["idAccount"]);
+            array_push($listTour,$tour);
+        }
+        return $listTour;
+    }
+    public function GetListTourByDateIn($dateIn)
+    {
+        $listTour = array();
+        $query = "SELECT * FROM Tour where dateIn='$dateIn' order by 'dateIn' DESC";
+        $result = DataProvider::getInstance()->Execute($query);
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tour = new Tour();
+            $tour->SetId($row["id"])
+                ->SetImageUrl($row["imageURL"])
+                ->SetCode($row["code"])
+                ->SetNameTour($row["nameTour"])
+                ->SetDateIn($row["dateIn"])
+                ->SetDateOut($row["dateOut"])
+                ->SetPriceAdult($row["priceAdult"])
+                ->SetPriceChild($row["priceChild"])
+                ->SetDetail($row["detail"])
+                ->SetIdAccount($row["idAccount"]);
+            array_push($listTour,$tour);
+        }
+        return $listTour;
+    }
+    public function GetListTourByDateOut($dateOut)
+    {
+        $listTour = array();
+        $query = "SELECT * FROM Tour where dateOut='$dateOut' order by 'dateIn' DESC";
+        $result = DataProvider::getInstance()->Execute($query);
+        $row = mysqli_num_rows($result);
+        while ($row = $result->fetch_assoc()) {
+            $tour = new Tour();
+            $tour->SetId($row["id"])
+                ->SetImageUrl($row["imageURL"])
+                ->SetCode($row["code"])
+                ->SetNameTour($row["nameTour"])
+                ->SetDateIn($row["dateIn"])
+                ->SetDateOut($row["dateOut"])
+                ->SetPriceAdult($row["priceAdult"])
+                ->SetPriceChild($row["priceChild"])
+                ->SetDetail($row["detail"])
+                ->SetIdAccount($row["idAccount"]);
+            array_push($listTour,$tour);
+            
+        }
+        return $listTour;
+    }
     public function GetListTourByIdAccount($idAccount)
     {
         $listTour = array();

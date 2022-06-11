@@ -30,7 +30,7 @@ if ($idAccount != null && $idAccount != -1) {
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/home-page2.css">
+    <link rel="stylesheet" href="../assets/css/home-page3.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">

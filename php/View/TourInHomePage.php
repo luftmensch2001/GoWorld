@@ -13,17 +13,22 @@ if (isset($_POST['submitSearch'])) {
     $pageNumber = 0;
     $hiddenDateIn = $dateIn;
     $hiddenDateOut = $dateOut;
+    $hiddenLocation = $location;
 } else {
     if (isset($_POST['hiddenDateIn']))
         $hiddenDateIn = $_POST['hiddenDateIn'];
     if (isset($_POST['hiddenDateOut']))
         $hiddenDateOut = $_POST['hiddenDateOut'];
+    if (isset($_POST['hiddenLocation']))
+        $hiddenLocation = $_POST['hiddenLocation'];
 }
 
 if ($dateIn == null)
     $dateIn = "";
 if ($dateOut == null)
     $dateOut = "";
+if ($location == null)
+    $location = "";
 
 if ($dateIn == "" && $dateOut == "") {
     $listTour = TourDTO::getInstance()->GetListTourByDate();
@@ -37,6 +42,20 @@ if (!$dateIn == "" && $dateOut == "") {
 if ($dateIn == "" && !$dateOut == "") {
     $listTour = TourDTO::getInstance()->GetListTourByDateOut($_POST['dateOut']);
 }
+
+if ($location != "") {
+    $realArray = array();
+    for ($i = 0; $i < count($listTour); $i++) {
+        $nameTour = $listTour[$i]->GetNameTour();
+        $detail = $listTour[$i]->GetDetail();
+        if (strpos($nameTour, $location) !== false) {
+            array_push($realArray, $listTour[$i]);
+        }
+    }
+    $listTour = $realArray;
+}
+
+
 
 
 $startNumber = ($pageNumber * 12);

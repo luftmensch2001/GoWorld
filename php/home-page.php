@@ -73,9 +73,30 @@ if ($idAccount != null && $idAccount != -1) {
         if (isset($_POST['hiddenDateOut'])) {
             $dateOut = $_POST['hiddenDateOut'];
         }
+        if (isset($_POST['location'])) {
+            $location = $_POST['location'];
+        }
+        if (isset($_POST['hiddenLocation'])) {
+            $location = $_POST['hiddenLocation'];
+        }
+        $string = file_get_contents("./data.json");
+        $json_a = json_decode($string, true);
+
+       // $location = $json_a['id']['name'];
+
+
+
         $currentDateTime = date('Y-m-d');
         ?>
         <form method="post" action="#" class="container__box-search">
+            <div class="box-search__option">
+                <div>
+                    <img src="../assets/img/location.png" alt="" width="20px" height="20px">
+                    <label for="">Địa điểm</label>
+                </div>
+                <input style="border: 1px solid black"
+                 type="text" name="location" value="<?php echo $location; ?>">
+            </div>
             <div class="box-search__option">
                 <div>
                     <img src="../assets/img/date.png" alt="" width="20px" height="20px">
@@ -106,6 +127,7 @@ if ($idAccount != null && $idAccount != -1) {
                 <input type="hidden" name="pageNumber" value="<?php echo 1; ?>">
                 <input type="hidden" name="hiddenDateIn" value="<?php echo $hiddenDateIn ?>">
                 <input type="hidden" name="hiddenDateOut" value="<?php echo $hiddenDateOut ?>">
+                <input type="hidden" name="hiddenLocation" value="<?php echo $hiddenLocation ?>">
                 <button> Đầu </button>
             </form>
             <?php
@@ -122,6 +144,7 @@ if ($idAccount != null && $idAccount != -1) {
                     <input type="hidden" name="pageNumber" value="<?php echo $i; ?>">
                     <input type="hidden" name="hiddenDateIn" value="<?php echo $hiddenDateIn ?>">
                     <input type="hidden" name="hiddenDateOut" value="<?php echo $hiddenDateOut ?>">
+                    <input type="hidden" name="hiddenLocation" value="<?php echo $hiddenLocation ?>">
                     <button><?php echo $i; ?></button>
                 </form>
             <?php } ?>
@@ -129,11 +152,17 @@ if ($idAccount != null && $idAccount != -1) {
                 <input type="hidden" name="pageNumber" value="<?php echo $count + 1; ?>">
                 <input type="hidden" name="hiddenDateIn" value="<?php echo $hiddenDateIn ?>">
                 <input type="hidden" name="hiddenDateOut" value="<?php echo $hiddenDateOut ?>">
+                <input type="hidden" name="hiddenLocation" value="<?php echo $hiddenLocation ?>">
                 <button> Cuối </button>
             </form>
         </div>
     </div>
     <?php include './View/Footer.php' ?>
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="../assets/js/Address.js"></script>
+    </script>
 </body>
 
 </html>

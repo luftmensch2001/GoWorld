@@ -3,5 +3,5 @@
         session_start();
     }
     unset($_SESSION['idAccount']);
-    header("Location: ./Home-page.php");
+    header("Location: ./index.php");
 ?>

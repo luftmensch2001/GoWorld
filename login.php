@@ -16,7 +16,7 @@ if (isset($_POST['usernameLogin'])) {
     $id = AccountDTO::getInstance()->GetId($usernameLogin, $passwordLogin);
     if ($id != -1) {
         $_SESSION['idAccount'] = $id;
-        header("Location: ./Home-page.php");
+        header("Location: ./index.php");
     } else {
         echo "<script>alert('Tên tài khoản hoặc mật khẩu không chính xác')</script>";
     }
@@ -37,7 +37,7 @@ if (isset($_POST['usernameSignup'])) {
             echo "<script>alert('Tạo tài khoản thành công')</script>";
             $id = AccountDTO::getInstance()->GetId($usernameSignup, $passwordSignup);
             $_SESSION['idAccount'] = $id;
-            header("Location: ./Home-page.php");
+            header("Location: ./index.php");
         }
         else
         {
@@ -70,9 +70,9 @@ if (isset($_POST['usernameSignup'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/login2.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/login2.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -88,12 +88,12 @@ if (isset($_POST['usernameSignup'])) {
             <button class="header__account-btn secondary-btn">Đăng ký</button>
              <div class="header__account-user">
                 <a href="">
-                    <img src="../assets/img/avatar.png" alt="" class="header__account-user-img">
+                    <img src="./assets/img/avatar.png" alt="" class="header__account-user-img">
                 </a>
                 <div class="header__account-user-menu">
                     <div class="account-user__info">
                         <a href="">
-                            <img src="../assets/img/avatar.png" alt=""  width="30px" height="30px">
+                            <img src="./assets/img/avatar.png" alt=""  width="30px" height="30px">
                             <div>
                                 <span class="account-user__info-name">Họ Và Tên</span> <br>
                                 <span class="account-user__info-sub">Thông tin cá nhân</span> 
@@ -102,15 +102,15 @@ if (isset($_POST['usernameSignup'])) {
                     </div>
                     <div class="account-user__option">
                         <a href="" class="account-user__option-item">
-                            <img src="../assets/img/history.png" alt="">
+                            <img src="./assets/img/history.png" alt="">
                             <span>Lịch sử đặt tour</span>
                         </a href="">
                         <a href="" class="account-user__option-item">
-                            <img src="../assets/img/setting.png" alt="">
+                            <img src="./assets/img/setting.png" alt="">
                             <span>Cài đặt</span>
                         </a href="">
                         <a href="" class="account-user__option-item">
-                            <img src="../assets/img/logout.png" alt="">
+                            <img src="./assets/img/logout.png" alt="">
                             <span>Đăng xuất</span>
                         </a href="">
                     </div>
@@ -118,7 +118,7 @@ if (isset($_POST['usernameSignup'])) {
             </div> -->
         </div>
     </header>
-    <div class="container" style="background-image: url('../assets/img/BackImgLogin.png')">
+    <div class="container" style="background-image: url('./assets/img/BackImgLogin.png')">
         <input id="type" type="hidden" value="<?php echo $type; ?>">
         <div class="container__form">
             <div class="container__form-header">
@@ -164,7 +164,7 @@ if (isset($_POST['usernameSignup'])) {
 
     </div>
     <?php include './View/Footer.php'?>
-    <script src="../assets/js/login.js"></script>
+    <script src="./assets/js/login.js"></script>
 </body>
 
 </html>

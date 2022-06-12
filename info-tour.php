@@ -54,10 +54,10 @@ if ($idAccount != null && $idAccount != -1) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/phuong.css">
-    <link rel="stylesheet" href="../assets/css/info-tour.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/phuong.css">
+    <link rel="stylesheet" href="./assets/css/info-tour.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -88,11 +88,11 @@ if ($idAccount != null && $idAccount != -1) {
                 <?php echo $nameTour ?>
             </h1>
             <div class="tour-item__rate">
-                <img src="../assets/img/upvote.png">
-                <img src="../assets/img/upvote.png">
-                <img src="../assets/img/upvote.png">
-                <img src="../assets/img/upvote.png">
-                <img src="../assets/img/downvote.png">
+                <img src="./assets/img/upvote.png">
+                <img src="./assets/img/upvote.png">
+                <img src="./assets/img/upvote.png">
+                <img src="./assets/img/upvote.png">
+                <img src="./assets/img/downvote.png">
             </div>
             <?php echo $detail ?>
         </div>
@@ -255,7 +255,7 @@ if ($idAccount != null && $idAccount != -1) {
             </div>
         </div>
     </form>
-    <script src="../assets/js/info-tour3.js"></script>
+    <script src="./assets/js/info-tour3.js"></script>
 </body>
 
 </html>

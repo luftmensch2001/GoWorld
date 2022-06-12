@@ -31,7 +31,7 @@ else {
     if (isset($_POST['submit'])) {
         $nameBlog = $_POST['nameBlog'];
         $detail = $_POST['detail'];
-        $uploaddir = '../assets/img/blogs/';
+        $uploaddir = './assets/img/blogs/';
         $rand1 = rand('1111111111', '9999999999');
         $rand2 = rand('1111111111', '9999999999');
         $value = $_FILES['imageUrl']['name'];
@@ -68,10 +68,10 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/postTour.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/postTour.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -118,6 +118,6 @@ else {
         filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
     });
 </script>
-<script src="../assets/js/postBlog.js"></script>
+<script src="./assets/js/postBlog.js"></script>
 
 </html>

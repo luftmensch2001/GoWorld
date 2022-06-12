@@ -29,9 +29,9 @@ if ($idAccount != null && $idAccount != -1) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour - Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/home-page3.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -39,13 +39,13 @@ if ($idAccount != null && $idAccount != -1) {
 
 <body>
     <header class="header">
-        <a class="header__logo" href="./home-page.php">
-            <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
+        <a class="header__logo" href="./index.php">
+            <img src="./assets/img/Logo.png" alt="" width="60px" height="60px">
             <h2>GoWorld</h2>
         </a>
         <div class="header__navbar">
             <div class="header__navbar-home">
-                <a href="./home-page.php">Trang chủ</a>
+                <a href="./index.php">Trang chủ</a>
                 <div class="header__underline underline-show"></div>
             </div>
             <div class="header__navbar-blog">
@@ -91,7 +91,7 @@ if ($idAccount != null && $idAccount != -1) {
         <form method="post" action="#" class="container__box-search">
             <div class="box-search__option">
                 <div>
-                    <img src="../assets/img/location.png" alt="" width="20px" height="20px">
+                    <img src="./assets/img/location.png" alt="" width="20px" height="20px">
                     <label for="">Địa điểm</label>
                 </div>
                 <input style="border: 1px solid black"
@@ -99,14 +99,14 @@ if ($idAccount != null && $idAccount != -1) {
             </div>
             <div class="box-search__option">
                 <div>
-                    <img src="../assets/img/date.png" alt="" width="20px" height="20px">
+                    <img src="./assets/img/date.png" alt="" width="20px" height="20px">
                     <label for="">Ngày checkin</label>
                 </div>
                 <input type="date" name="dateIn" id="" value="<?php echo $dateIn ?>">
             </div>
             <div class="box-search__option">
                 <div>
-                    <img src="../assets/img/date.png" alt="" width="20px" height="20px">
+                    <img src="./assets/img/date.png" alt="" width="20px" height="20px">
                     <label for="">Ngày checkout</label>
                 </div>
                 <input type="date" name="dateOut" id="" value="<?php echo $dateOut ?>">
@@ -161,7 +161,7 @@ if ($idAccount != null && $idAccount != -1) {
     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="../assets/js/Address.js"></script>
+    <script src="./assets/js/Address.js"></script>
     </script>
 </body>
 

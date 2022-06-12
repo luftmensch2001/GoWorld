@@ -29,9 +29,9 @@ if ($idAccount != null && $idAccount != -1) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour - Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/full-blog3.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/full-blog3.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -40,13 +40,13 @@ if ($idAccount != null && $idAccount != -1) {
 
 <body>
     <header class="header">
-        <a class="header__logo" href="./home-page.php">
-            <img src="../assets/img/Logo.png" alt="" width="60px" height="60px">
+        <a class="header__logo" href="./index.php">
+            <img src="./assets/img/Logo.png" alt="" width="60px" height="60px">
             <h2>GoWorld</h2>
         </a>
         <div class="header__navbar">
             <div class="header__navbar-home">
-                <a href="./home-page.php">Trang chủ</a>
+                <a href="./index.php">Trang chủ</a>
             </div>
             <div class="header__navbar-blog">
                 <a href="./blog.php">Blog</a>

@@ -22,7 +22,7 @@ else {
     if (isset($_FILES['imageUrl'])) {
         $nameBlog = $_POST['nameBlog'];
         $detail = $_POST['detail'];
-        $uploaddir = '../assets/img/blogs/';
+        $uploaddir = './assets/img/blogs/';
         $summary = $_POST['summary'];
         $rand1 = rand('1111111111', '9999999999');
         $rand2 = rand('1111111111', '9999999999');
@@ -55,10 +55,10 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/postTour2.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/postTour2.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -73,7 +73,7 @@ else {
     
     <form enctype="multipart/form-data" class="container" action="#" method="post" onsubmit="return Check()">
         <h1 class="post__title">THÊM BÀI VIẾT MỚI</h1>
-        <img src="../assets/img/img-tour.png" id="image" alt="" class="post__img">
+        <img src="./assets/img/img-tour.png" id="image" alt="" class="post__img">
         <input type="hidden" id="hidden" value="">
         <label>
             <input style="display: none;" id="image-input" type="file" name="imageUrl" accept="image/jpeg, image/png, image/jpg"></input>
@@ -104,6 +104,6 @@ else {
         filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
     });
 </script>
-<script src="../assets/js/postBlog.js"></script>
+<script src="./assets/js/postBlog.js"></script>
 
 </html>

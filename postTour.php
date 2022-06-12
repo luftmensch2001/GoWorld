@@ -19,21 +19,7 @@ else {
         header("Location:Logout.php");
     } else
         $fullName = $account->GetFullName();
-    if (isset($_POST['idTour'])) {
-        $id = $_POST['idTour'];
-        $tour = TourDTO::getInstance()->GetTour($id);
-        $nameTour = $tour->GetNameTour();
-        $imageUrl = $tour->GetImageUrl();
-        $code = $tour->GetCode();
-        $dateIn = $tour->GetDateIn();
-        $dateOut = $tour->GetDateOut();
-        $priceAdult = $tour->GetPriceAdult();
-        $priceChild = $tour->GetPriceChild();
-        $currentDateTime = date('Y-m-d');
-        $detail = $tour->GetDetail();
-    }
-    if (isset($_POST['submit'])) {
-        $id = $_POST['idTour'];
+    if (isset($_FILES['imageUrl'])) {
         $code = $_POST['code'];
         $nameTour = $_POST['nameTour'];
         $dateIn = $_POST['dateIn'];
@@ -42,29 +28,24 @@ else {
         $currentDateTime = date('Y-m-d');
         $priceChild = $_POST['priceChild'];
         $detail = $_POST['detail'];
-        if (TourDTO::getInstance()->ExistCode($code) && $tour->GetCode()!==$code) {
+        if (TourDTO::getInstance()->ExistCode($code)) {
             echo "<script>alert('Mã tour đã tồn tại')</script>";
         } else {
-            $uploaddir = '../assets/img/tours/';
+            $uploaddir = './assets/img/tours/';
             $rand1 = rand('1111111111', '9999999999');
             $rand2 = rand('1111111111', '9999999999');
             $value = $_FILES['imageUrl']['name'];
-            if ($value != '') {
-                $uploadfile = $uploaddir . $rand1 . $rand2 . $value;
-                move_uploaded_file($_FILES['imageUrl']['tmp_name'], $uploadfile);
-            } else {
-                $uploadfile = $_POST['oldImage'];
-            }
+            $uploadfile = $uploaddir . $rand1 . $rand2 . $value;
+            move_uploaded_file($_FILES['imageUrl']['tmp_name'], $uploadfile);
             $tour = new Tour();
-            $tour->SetImageURL($uploadfile)
-                ->SetCode($code)
+            $tour->SetImageURL($uploadfile)->SetCode($code)
                 ->SetNameTour($nameTour)
-                ->SetId($id)
                 ->SetDateIn($dateIn)->SetDateOut($dateOut)
                 ->SetPriceAdult($priceAdult)->SetPriceChild($priceChild)
                 ->SetDetail($detail)->SetIdAccount($account->GetId());
-            if (TourDTO::getInstance()->UpdateTour($tour)) {
-                echo "<script>alert('Sửa tour thành công')</script>";
+            if (TourDTO::getInstance()->CreateTour($tour))
+            {
+                echo "<script>alert('Thêm tour mới thành công')</script>";
                 header("Location:tour.php");
             }
         }
@@ -78,12 +59,12 @@ else {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa Tour</title>
+    <title>Đăng Tour</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/postTour.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/postTour.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -97,9 +78,8 @@ else {
     </header>
     <form enctype="multipart/form-data" class="container" action="#" method="post" onsubmit="return Check()">
         <h1 class="post__title">THÊM TOUR MỚI</h1>
-        <img src="<?php echo $imageUrl ?>" id="image" alt="" class="post__img">
-        <input type="hidden" id="hidden" name="oldImage" value="<?php echo $imageUrl ?>">
-        <input type="hidden" id="hiddenId" name="idTour" value="<?php echo $id ?>">
+        <img src="./assets/img/img-tour.png" id="image" alt="" class="post__img">
+        <input type="hidden" id="hidden" value="">
         <label>
             <input style="display: none;" id="image-input" type="file" name="imageUrl" accept="image/jpeg, image/png, image/jpg"></input>
             <span class="post__button-upload">Chọn hình ảnh</span>
@@ -131,7 +111,7 @@ else {
         <h2 class="post__info-title" style="font-size: 2.5em; margin-top: 40px">Mô tả về Tour</h2>
         <textarea name="detail" id="editor" cols="30" rows="30" style="width:100%"><?php echo $detail ?></textarea>
         <div class="post__button-zone">
-            <input type="submit" name="submit" class="post__button" value="Thêm tour"></input>
+            <input type="submit" class="post__button" value="Thêm tour"></input>
             <!-- <button class="post__button-2" type="reset" id="deleteButton">Xoá thông tin</button>-->
         </div>
     </form>
@@ -145,6 +125,6 @@ else {
         filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
     });
 </script>
-<script src="../assets/js/postTour.js"></script>
+<script src="./assets/js/postTour.js"></script>
 
 </html>
